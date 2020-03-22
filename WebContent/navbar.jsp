@@ -12,7 +12,7 @@
 	<div class="navbar-fixed">
 	<nav>
     <div class="nav-wrapper">
-      <a href="index.jsp" class="brand-logo">Saarthi Bank</a>
+      <a href="index.jsp" class="brand-logo"><i class="large material-icons">supervisor_account</i>Saarthi Bank</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="index.jsp">Login</a></li>
         <li><a href="createAccount.jsp">Create New Account</a></li>

@@ -1,12 +1,17 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.persistence.UserDao;
+
+import oracle.net.ns.SessionAtts;
 
 /**
  * Servlet implementation class LoginServlet
@@ -37,9 +42,14 @@ public class LoginServlet extends HttpServlet {
 		String pwd=request.getParameter("password");
 		UserDao dao=new UserDao();
 		if(dao.validate(name, pwd)==true){
+			HttpSession session=request.getSession();
+			session.setAttribute("name", name);
+			session.setAttribute("pwd", pwd);
 			request.getRequestDispatcher("userHome.jsp").forward(request, response);
 		}else{
-			response.sendRedirect("index.jsp");
+			PrintWriter out=response.getWriter();
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Invalid username or password</div>");
+			request.getRequestDispatcher("index.jsp").include(request, response);
 		}
 		doGet(request, response);
 	}

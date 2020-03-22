@@ -61,5 +61,34 @@ public class UserDao {
 		
 		return flag;
 	}
+	public User getUserInfo(String user_name,String pwd){
+		User user=null;
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from user_info where user_name=? and password=?");
+			ps.setString(1, user_name);
+			ps.setString(2, pwd);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				user=new User(rs.getInt(1), 
+						rs.getInt(2), rs.getString(3), 
+						rs.getString(4), rs.getString(5), rs.getString(6), 
+						rs.getString(7), rs.getString(8), rs.getString(9));
+				
+			}
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				ps.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		return user;
+	}
 	
 }

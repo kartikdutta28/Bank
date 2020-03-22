@@ -4,9 +4,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Saarthi Bank</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="css/materialize.min.css">
+<style>
+.msg {
+  width:100%;
+  border: 1px solid;
+  padding:10px;
+  margin: 20px;
+  color: grey;
+}
+.msg-error {
+  // rouge
+  border-color: #d32f2f;
+  background-color: #ef5350;
+  color: white;
+}
+.msg-alert {
+  //orange
+   border-color: #ef6c00;
+  background-color: #ff9800;
+  color: white;
+}
+
+.msg-info{
+  border-color: #0288d1;
+  background-color: #29b6f6;
+  color: white;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>

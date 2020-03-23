@@ -1,3 +1,6 @@
+<%@page import="com.model.Account"%>
+<%@page import="java.util.List"%>
+<%@page import="com.persistence.AccountDao"%>
 <%@page import="com.model.User"%> <%@page import="com.persistence.UserDao"%> <%@
 page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
@@ -16,7 +19,11 @@ pageEncoding="ISO-8859-1"%>
     <jsp:include page="navbar.jsp"></jsp:include>
     <% String name=(String)session.getAttribute("name"); String
     pwd=(String)session.getAttribute("pwd"); UserDao dao=new UserDao(); User
-    user=dao.getUserInfo(name, pwd); %>
+    user=dao.getUserInfo(name, pwd); 
+    session.setAttribute("user", user);
+    AccountDao ad=new AccountDao();
+    List<Account> list=ad.getAccountInfo(user.getUser_id());
+    %>
     <div class="row">
       <div class="col s3">
         <!-- Grey navigation panel -->
@@ -61,38 +68,49 @@ pageEncoding="ISO-8859-1"%>
       </div>
 
       <div class="col s6">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title"
-              ><b>User Name :</b> <%=user.getUser_name() %></span
-            >
-            <span class="card-title"
-              ><b>Account Number :</b> <%=user.getAccount_id() %></span
-            >
-            <span class="card-title"
-              ><b>First Name :</b> <%=user.getFirst_name() %></span
-            >
-            <span class="card-title"
-              ><b>Last Number :</b> <%=user.getLast_name() %></span
-            >
-            <span class="card-title"
-              ><b>User Id :</b> <%=user.getUser_id() %></span
-            >
-            <span class="card-title"
-              ><b>Phone Number :</b> <%= "+91"+user.getPhone_number() %></span
-            >
+              ><b>User Name :</b> <%=user.getUser_name() %></span>
+              <p><b>First Name :</b> <%=user.getFirst_name() %></p>
+              <p><b>Last Name :</b> <%=user.getLast_name() %></p>
             <p><b>Address :</b> <%=user.getAddress() %></p>
+            <p><b>Email Id :</b> <%=user.getEmail() %></p>
+            <p><b>Transaction Password :</b> <%=user.getTransaction_password() %></p>
           </div>
           <div class="card-action">
-            <a>Account Balance = <%=user.getAmount()+"$" %></a>
-            <a href="#">View monthly statement</a>
-            <a href="#">View Annual statement</a>
-            
-          </div>
+          	<a href="addAccount.jsp">Add account</a>
         </div>
+        </div>
+        <%
+		for(Account a:list){
+			String t="";
+			if(a.getAccount_type().equals("SV")){
+				t+="Savings Account";
+			}else{
+				t+="Salary Account";
+			}
+			String id=String.valueOf(a.getAccount_id());
+			out.println("<div class='col s6'>"+
+			        "<div class='card teal darken-1 hoverable'>"+
+	          "<div class='card-content white-text'>"+
+	            "<span class='card-title'>"+
+	          "<b>Account no : </b>"+id.substring(0,2)+"-"+id.substring(2, 5)+"-"+id.subSequence(5,7)+"</span>"+
+	            "<p><b>Amount : $</b>"+a.getAmount()+"</p>"+
+	          	"<p><b>Account Type : </b>"+t+"</p>"+
+	          	"<p><b>Account Creation date : </b>"+a.getCreation_date()+"</p>"+
+	          "</div>"+
+	        "</div>"+
+	      "</div>");
+		}
+	%>  
+      </div><br/>
+      <div class="col s3">
+      	<a class="btn" onClick="window.print()">Print </a>
       </div>
+    	
     </div>
-
+	
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <jsp:include page="footer.jsp"></jsp:include>
   </body>

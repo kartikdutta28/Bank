@@ -1,47 +1,50 @@
+<%@page import="com.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Saarthi Bank</title>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/materialize.min.css" />
-  </head>
-  <body>
-    <jsp:include page="navbar.jsp"></jsp:include>
-    <div class="row">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<jsp:include page="navbar.jsp"></jsp:include>
+	<%
+		User user=(User)session.getAttribute("user");
+	%>
+	<div class="row">
       <div class="col s2"></div>
-      <form class="col s8" action="RegisterServlet" method="post">
+      <form class="col s8" action="addnewAccountServlet" method="post">
       <div class="row">
-      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to open account</b></div>
+      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to open another account</b></div>
       </div>
       
         <div class="row">
           <div class="input-field col s6">
-            <input
+            <input disabled
               placeholder="Placeholder"
               name="first_name"
+              <%="value='"+user.getFirst_name()+"'" %>
+              
               type="text"
               class="validate"
             />
             <label for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input name="last_name" type="text" class="validate" />
+            <input disabled name="last_name" type="text" class="validate" 
+            <%="value='"+user.getLast_name()+"'" %>/>
             <label for="last_name">Last Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input
+            <input disabled
               placeholder="Current address only"
               name="address"
               type="text"
               class="validate"
+              <%="value='"+user.getAddress()+"'" %>
             />
             <label for="disabled">Address</label>
           </div>
@@ -49,38 +52,45 @@ pageEncoding="ISO-8859-1"%>
         <div class="row">
           <div class="input-field col s12">
             <input
+              disabled
               placeholder="User name/Log in Name"
               name="user_name"
               type="text"
               class="validate"
+              <%="value='"+user.getUser_name()+"'" %>
             />
             <label for="user_name">User Name</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input
+            <input disabled
               placeholder="Phone Number(+91)"
               name="ph_no"
               type="text"
               class="validate"
+              <%="value='"+user.getPhone_number()+"'" %>
             />
             <label for="ph_no">Phone Number</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate" />
+            <input disabled name="password" type="password" class="validate" 
+            <%="value='"+user.getPassword()+"'" %>
+            />
             <label for="password">Password</label>
           </div>
           <div class="input-field col s6">
-            <input name="re-password" type="password" class="validate" />
+            <input name="re-password" type="password" class="validate" 
+            <%="value='"+user.getPassword()+"'" %>/>
             <label for="re-password">Re-enter Password</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="email" type="email" class="validate" />
+            <input name="email" type="email" class="validate" 
+            <%="value='"+user.getEmail()+"'" %>/>
             <label for="email">Email</label>
           </div>
            <div class="input-field col s6">
@@ -114,9 +124,5 @@ pageEncoding="ISO-8859-1"%>
         <div class="col s2"></div>
       </form>
     </div>
-    <script src="jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <jsp:include page="footer.jsp"></jsp:include>
-    
-  </body>
+</body>
 </html>

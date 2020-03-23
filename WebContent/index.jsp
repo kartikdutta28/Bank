@@ -2,7 +2,7 @@
 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<!-- Cooment -->
+	
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title>Saarthi Bank</title>
@@ -52,7 +52,7 @@ pageEncoding="ISO-8859-1"%>
     <div class="row">
       <div class="col s2"></div>    
       <form class="col s6" action="LoginServlet" method="post">
-     <div class="card-panel deep-purple  lighten-5 ">Login if your'e existing user, Else 
+     <div class="card-panel deep-purple  lighten-5 hoverable ">Login if your'e existing user, Else 
       	<a href="createAccount.jsp">Register Here</a> to create or open an account</div>
         <div class="row">
           <div class="right-align input-field col s6">
@@ -73,17 +73,17 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <button
-            class="btn waves-effect waves-light"
+            class="btn waves-effect waves-light pulse"
             type="submit"
             name="action"
           >
-            Submit
+            Log In
             <i class="material-icons right">send</i>
           </button>
         </div>
       </form>
       <div class="col s4">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title">Transfer Funds</span>
             <p>
@@ -92,12 +92,12 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a href="#">Transfer Funds $</a>
+            <a class="btn"  href="#">Transfer Funds $</a>
           </div>
         </div>
       </div>
       <div class="col s4">
-        <div class="card blue-grey darken-1">
+        <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title">Request Check Book</span>
             <p>
@@ -106,7 +106,7 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a href="#">Apply For Cheque Book</a>
+            <a class="btn" href="#">Apply For Cheque Book</a>
           </div>
         </div>
       </div>

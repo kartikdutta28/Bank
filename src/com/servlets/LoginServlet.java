@@ -18,7 +18,7 @@ import oracle.net.ns.SessionAtts;
  */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	static int n=0;
     /**
      * Default constructor. 
      */
@@ -41,13 +41,19 @@ public class LoginServlet extends HttpServlet {
 		String name=request.getParameter("first_name");
 		String pwd=request.getParameter("password");
 		UserDao dao=new UserDao();
+		PrintWriter out=response.getWriter();
 		if(dao.validate(name, pwd)==true){
 			HttpSession session=request.getSession();
 			session.setAttribute("name", name);
 			session.setAttribute("pwd", pwd);
 			request.getRequestDispatcher("userHome.jsp").forward(request, response);
 		}else{
-			PrintWriter out=response.getWriter();
+			n++;
+			if(n==3){
+				out.write("<div class='msg msg-error z-depth-3 scale-transition'>Your account Has been blocked try after 24 hours</div>");
+				request.getRequestDispatcher("index.jsp").include(request, response);
+			}
+			
 			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Invalid username or password</div>");
 			request.getRequestDispatcher("index.jsp").include(request, response);
 		}

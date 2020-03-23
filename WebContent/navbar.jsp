@@ -25,6 +25,7 @@ pageEncoding="ISO-8859-1"%>
             <li><a href="badges.html">Deposit</a></li>
             <li><a href="collapsible.html">Withdraw</a></li>
             <li><a href="collapsible.html">Transfer</a></li>
+            <li><a href="faqPage.jsp">FAQ</a>
             <%
             	if(session.getAttribute("name")!=null){
             		out.println("<li><a href='index.jsp'>Log Out</a></li>");

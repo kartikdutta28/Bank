@@ -68,7 +68,7 @@ public class UserDao {
 		User user=null;
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("select * from user_info where user_name=? and password=?");
+			ps=connection.prepareStatement("select * from users_info where user_name=? and password=?");
 			ps.setString(1, user_name);
 			ps.setString(2, pwd);
 			rs=ps.executeQuery();

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.model.Account;
 import com.model.User;
@@ -34,5 +36,20 @@ public class AccountDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	public List<Account> getAccountInfo(int user_id){
+		List<Account> list=new ArrayList<Account>();
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from ACCOUNTS_INFO where USER_ID=? " );
+			ps.setInt(1, user_id);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				list.add(new Account(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getDate(5)));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

@@ -14,7 +14,7 @@ public class UserDao {
 	public void addUser(User user){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("insert into user_info values(?,?,?,?,?,?,?,?,?)");
+			ps=connection.prepareStatement("insert into user_info values(?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1,user.getUser_id());
 			ps.setInt(2, user.getAccount_id());
 			ps.setString(3,user.getFirst_name());
@@ -24,6 +24,7 @@ public class UserDao {
 			ps.setString(7, user.getPhone_number());
 			ps.setString(8,user.getPassword());
 			ps.setString(9, user.getEmail());
+			ps.setFloat(10, user.getAmount());
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -73,7 +74,7 @@ public class UserDao {
 				user=new User(rs.getInt(1), 
 						rs.getInt(2), rs.getString(3), 
 						rs.getString(4), rs.getString(5), rs.getString(6), 
-						rs.getString(7), rs.getString(8), rs.getString(9));
+						rs.getString(7), rs.getString(8), rs.getString(9),rs.getFloat(10));
 				
 			}
 			ps.executeUpdate();

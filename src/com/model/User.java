@@ -10,7 +10,8 @@ public class User {
 	private String phone_number;
 	private String password;
 	private String email;
-		
+	private float amount;
+
 	public String getUser_name() {
 		return user_name;
 	}
@@ -20,8 +21,9 @@ public class User {
 	}
 
 	public User(int user_id, int account_id, String first_name, String last_name, String address, String user_name,
-			String phone_number, String password, String email) {
+			String phone_number, String password, String email,float amount) {
 		super();
+		this.amount=amount;
 		this.user_id = user_id;
 		this.account_id = account_id;
 		this.first_name = first_name;
@@ -34,7 +36,15 @@ public class User {
 	}
 
 	public User() {
+
+	}
 	
+	public float getAmount() {
+		return amount;
+	}
+
+	public void setAmount(float amount) {
+		this.amount = amount;
 	}
 
 	@Override
@@ -107,6 +117,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
 }

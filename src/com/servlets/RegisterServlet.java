@@ -47,8 +47,9 @@ public class RegisterServlet extends HttpServlet {
 		String ph_no=request.getParameter("ph_no");
 		String password=request.getParameter("password");
 		String email=request.getParameter("email");
+		Float amount=Float.parseFloat(request.getParameter("amount"));
 		UserDao dao=new UserDao();
-		dao.addUser(new User(user_id, account_id, first_name, last_name, address, user_name, ph_no, password, email));
+		dao.addUser(new User(user_id, account_id, first_name, last_name, address, user_name, ph_no, password, email,amount));
 		response.sendRedirect("index.jsp");
 	}
 

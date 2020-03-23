@@ -1,6 +1,7 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.Account;
 import com.model.User;
+import com.persistence.AccountDao;
 import com.persistence.UserDao;
 
 /**
@@ -39,6 +42,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Random random=new Random();
 		int user_id=Integer.parseInt(String.format("%04d", random.nextInt(10000)));
+		String transaction_password=String.format("%04d", random.nextInt(10000));
 		int account_id=Integer.parseInt(String.format("%08d", random.nextInt(100000000)));
 		String first_name=request.getParameter("first_name");
 		String last_name =request.getParameter("last_name");
@@ -48,8 +52,11 @@ public class RegisterServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		String email=request.getParameter("email");
 		Float amount=Float.parseFloat(request.getParameter("amount"));
+		String type=request.getParameter("type");
 		UserDao dao=new UserDao();
-		dao.addUser(new User(user_id, account_id, first_name, last_name, address, user_name, ph_no, password, email,amount));
+		dao.addUser(new User(user_id, first_name, last_name, address, user_name, ph_no, password, transaction_password, email));
+		AccountDao ad=new AccountDao();
+		ad.addAccount(new Account(account_id, user_id, type, amount, new Date()));
 		response.sendRedirect("index.jsp");
 	}
 

@@ -79,11 +79,22 @@ pageEncoding="ISO-8859-1"%>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <input name="email" type="email" class="validate" />
             <label for="email">Email</label>
           </div>
-        </div>
+           <div class="input-field col s6">
+    	
+    	<select name="type" class="browser-default">
+      <option value="SA">Salary Account</option>
+      <option value="SV">Savings Account</option>
+      
+    </select>
+    
+  </div>
+    		
+  		  </div>
+        
         <div class="row">
           <div class="input-field col s12">
             <input name="amount" type="text" class="validate" />
@@ -103,7 +114,9 @@ pageEncoding="ISO-8859-1"%>
         <div class="col s2"></div>
       </form>
     </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+    <script src="jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <jsp:include page="footer.jsp"></jsp:include>
+    
   </body>
 </html>

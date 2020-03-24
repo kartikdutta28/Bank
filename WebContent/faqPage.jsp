@@ -15,7 +15,7 @@
 		FaqDao dao=new FaqDao();
 		List<FAQ> li=dao.getAll();
 	%>
-	<br/><br/><br/><br/>
+	<br/><br/>
 	<div class="row">
       <div class="col s2"></div> 
       <form class="col s6" action="addFaqQuestion" method="post">

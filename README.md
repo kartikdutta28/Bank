@@ -10,4 +10,7 @@
 
 ### User Home Page
 
-![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/Annotation%202020-03-22%20220520.jpg)
+![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/home.jpg)
+
+###FAQ Page
+![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/faq.jpg)

@@ -12,5 +12,5 @@
 
 ![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/home.jpg)
 
-###FAQ Page
+### FAQ Page
 ![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/faq.jpg)

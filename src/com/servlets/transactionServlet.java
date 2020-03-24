@@ -2,6 +2,7 @@ package com.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -54,7 +55,7 @@ public class transactionServlet extends HttpServlet {
 		}else{
 			post_amt=curr_amount-amount;
 		}
-		td.addTransaction(new Transaction(transaction_id, user_id, account_id, amount, post_amt, type, comments));
+		td.addTransaction(new Transaction(transaction_id, user_id, account_id, amount, post_amt, type, comments,new Date()));
 		td.updateAccount(post_amt, account_id);
 		if(type.equals("D")){
 			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Amount sucessfully deposited</div>");

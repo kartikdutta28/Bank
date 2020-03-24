@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Date;
+
 public class Transaction {
 	private int transaction_id;
 	private int user_id;
@@ -8,12 +10,9 @@ public class Transaction {
 	private double post_balance;
 	private String transaction_type;
 	private String comments;
-	
-	public Transaction() {
-	
-	}
+	Date date;
 	public Transaction(int transaction_id, int user_id, int account_id, double amount, double post_balance,
-			String transaction_type, String comments) {
+			String transaction_type, String comments, Date date) {
 		super();
 		this.transaction_id = transaction_id;
 		this.user_id = user_id;
@@ -22,6 +21,7 @@ public class Transaction {
 		this.post_balance = post_balance;
 		this.transaction_type = transaction_type;
 		this.comments = comments;
+		this.date = date;
 	}
 	public int getTransaction_id() {
 		return transaction_id;
@@ -65,6 +65,12 @@ public class Transaction {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
-	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+		
 	
 }

@@ -59,4 +59,14 @@
     <servlet-name>transactionServlet</servlet-name>
     <url-pattern>/transactionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>statementServlet</display-name>
+    <servlet-name>statementServlet</servlet-name>
+    <servlet-class>com.servlets.statementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>statementServlet</servlet-name>
+    <url-pattern>/statementServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

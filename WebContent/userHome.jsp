@@ -65,9 +65,13 @@ pageEncoding="ISO-8859-1"%>
           </li>
           <li class="collection-item">
             <div>
-              Check Balance<a href="#!" class="secondary-content"
+              Get Statement<a href="#" class="secondary-content"
                 ><i class="material-icons">functions</i></a
               >
+              <form action="statement.jsp" method="post">
+              	<input type="text" name="acc_id" placeholder="Enter your account Id">
+              	<input class="btn" type="submit" value="Get Statement">
+              </form>
             </div>
           </li>
           <li class="collection-item">
@@ -122,7 +126,7 @@ pageEncoding="ISO-8859-1"%>
 			        "<div class='card teal darken-1 hoverable'>"+
 	          "<div class='card-content white-text'>"+
 	            "<span class='card-title'>"+
-	          "<b>Account no : </b>"+id.substring(0,2)+"-"+id.substring(2, 5)+"-"+id.subSequence(5,7)+"</span>"+
+	          "<b>Account no : </b>"+id.substring(0,2)+"-"+id.substring(2, 5)+"-"+id.subSequence(5,8)+"</span>"+
 	            "<p><b>Amount : $</b>"+a.getAmount()+"</p>"+
 	          	"<p><b>Account Type : </b>"+t+"</p>"+
 	          	"<p><b>Account Creation date : </b>"+a.getCreation_date()+"</p>"+

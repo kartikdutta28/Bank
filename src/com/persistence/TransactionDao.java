@@ -3,6 +3,8 @@ package com.persistence;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.model.Transaction;
 
@@ -14,7 +16,7 @@ public class TransactionDao {
 	public void addTransaction(Transaction transaction){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("insert into TRANSACTION_TABLE values(?,?,?,?,?,?,?)");
+			ps=connection.prepareStatement("insert into TRANSACTION_TABLE values(?,?,?,?,?,?,?,?)");
 			ps.setInt(1, transaction.getTransaction_id());
 			ps.setInt(2, transaction.getUser_id());
 			ps.setInt(3,transaction.getAccount_id());
@@ -22,6 +24,8 @@ public class TransactionDao {
 			ps.setDouble(5, transaction.getPost_balance());
 			ps.setString(6, transaction.getTransaction_type());
 			ps.setString(7, transaction.getComments());
+			java.sql.Date sqlDate = new java.sql.Date(transaction.getDate().getTime());
+			ps.setDate(8, sqlDate);
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -77,5 +81,28 @@ public class TransactionDao {
 				e.printStackTrace();
 			}
 		}
+	}
+	public List<Transaction> getStatement(int account_id){
+		List<Transaction> list=new ArrayList<Transaction>();
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from transaction_table where account_id=?");
+			ps.setInt(1, account_id);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				list.add(new Transaction(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getDouble(4), 
+						rs.getDouble(5), rs.getString(6),rs.getString(7),rs.getDate(8)));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				ps.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 }

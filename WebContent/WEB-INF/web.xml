@@ -49,4 +49,14 @@
     <servlet-name>addFaqQuestion</servlet-name>
     <url-pattern>/addFaqQuestion</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>transactionServlet</display-name>
+    <servlet-name>transactionServlet</servlet-name>
+    <servlet-class>com.servlets.transactionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>transactionServlet</servlet-name>
+    <url-pattern>/transactionServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

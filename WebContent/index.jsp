@@ -92,7 +92,7 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a class="btn"  href="#">Transfer Funds $</a>
+            <a onclick="M.toast({html: 'Login or create account first'})" class="btn"  href="#">Transfer Funds $</a>
           </div>
         </div>
       </div>
@@ -106,7 +106,7 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a class="btn" href="#">Apply For Cheque Book</a>
+            <a onclick="M.toast({html: 'Login or create account first'})" class="btn" href="#">Apply For Cheque Book</a>
           </div>
         </div>
       </div>

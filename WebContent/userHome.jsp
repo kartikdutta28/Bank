@@ -79,14 +79,14 @@ pageEncoding="ISO-8859-1"%>
           </li>
           <li class="collection-item">
             <div>
-              Width draw<a href="#!" class="secondary-content"
+              Width draw<a href="transactionForm.jsp" class="secondary-content"
                 ><i class="material-icons">credit_card</i></a
               >
             </div>
           </li>
           <li class="collection-item">
             <div>
-              Deposit<a href="#!" class="secondary-content"
+              Deposit<a href="transactionForm.jsp" class="secondary-content"
                 ><i class="material-icons">create_new_folder</i></a
               >
             </div>

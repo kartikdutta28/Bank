@@ -36,12 +36,7 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
-	<%
-	if(session.getAttribute("name")==null){
-		out.write("<div class='msg msg-error z-depth-3 scale-transition'>Please login first to transfer funds</div>");
-		request.getRequestDispatcher("index.jsp").include(request, response);
-	}
-	%>
+	
 	<%
 	User user=(User)session.getAttribute("user");
 	%>

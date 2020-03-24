@@ -22,8 +22,15 @@ pageEncoding="ISO-8859-1"%>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="index.jsp">Login</a></li>
             <li><a href="createAccount.jsp">Create New Account</a></li>
-            <li><a href="transactionForm.jsp">Deposit</a></li>
-            <li><a href="transactionForm.jsp">Withdraw</a></li>
+            <%
+            	if(session.getAttribute("name")!=null){
+            		out.println("<li><a href='transactionForm.jsp'>Deposit</a></li>");
+            	}
+            %><%
+            	if(session.getAttribute("name")!=null){
+            		out.println("<li><a href='transactionForm.jsp'>Withdraw</a></li>");
+            	}
+            %>
             <li><a href="transactionForm.jsp">Transfer</a></li>
             <li><a href="faqPage.jsp">FAQ</a>
             <%

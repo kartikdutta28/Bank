@@ -76,7 +76,7 @@ pageEncoding="ISO-8859-1"%>
           </li>
           <li class="collection-item">
             <div>
-              Transfer Funds<a href="#!" class="secondary-content"
+              Transfer Funds<a href="transferForm.jsp" class="secondary-content"
                 ><i class="material-icons">forward</i></a
               >
             </div>

@@ -69,7 +69,8 @@ pageEncoding="ISO-8859-1"%>
                 ><i class="material-icons">functions</i></a
               >
               <form action="statement.jsp" method="post">
-              	<input type="text" name="acc_id" placeholder="Enter your account Id">
+              	<input type="text" name="acc_id" placeholder="Enter your account Id"><br/>
+              	<input type="text" name="rows" placeholder="Enter the no of transactions you wish to see">
               	<input class="btn" type="submit" value="Get Statement">
               </form>
             </div>

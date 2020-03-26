@@ -51,7 +51,7 @@ pageEncoding="ISO-8859-1"%>
     <br /><br /><br /><br />
     <div class="row">
       <div class="col s2"></div>    
-      <form class="col s6" action="LoginServlet" method="post">
+      <form id="formid" class="col s6" action="LoginServlet" method="post">
      <div class="card-panel deep-purple  lighten-5 hoverable ">Login if your'e existing user, Else 
       	<a href="createAccount.jsp">Register Here</a> to create or open an account</div>
         <div class="row">
@@ -67,8 +67,11 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate" />
-            <label for="last_name">Password</label>
+            <input name="password" type="password" class="validate" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+            <label for="password">Password</label>
+            <span class="helper-text" 
+            data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+            data-success="Valid">Ex John@1234	</span>
           </div>
         </div>
         <div class="row">

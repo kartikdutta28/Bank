@@ -82,12 +82,13 @@ public class TransactionDao {
 			}
 		}
 	}
-	public List<Transaction> getStatement(int account_id){
+	public List<Transaction> getStatement(int account_id,int rows){
 		List<Transaction> list=new ArrayList<Transaction>();
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("select * from transaction_table where account_id=?");
+			ps=connection.prepareStatement("select * from transaction_table where account_id=? order by tdate asc");
 			ps.setInt(1, account_id);
+			ps.setMaxRows(rows);
 			rs=ps.executeQuery();
 			while(rs.next()){
 				list.add(new Transaction(rs.getInt(1), rs.getInt(2),rs.getInt(3), rs.getDouble(4), 

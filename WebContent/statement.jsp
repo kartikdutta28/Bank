@@ -24,7 +24,8 @@
         <tbody>
         	<%
 			TransactionDao td=new TransactionDao();
-			List<Transaction>li=td.getStatement(Integer.parseInt((String)request.getParameter("acc_id")));
+			List<Transaction>li=td.getStatement(Integer.parseInt((String)request.getParameter("acc_id")),
+					Integer.parseInt(request.getParameter("rows")));
 			for(Transaction t:li){
 				out.println("<tr>");
 				out.println("<td>"+t.getAccount_id()+"</td>");

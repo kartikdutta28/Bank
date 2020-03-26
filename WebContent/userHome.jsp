@@ -77,25 +77,18 @@ pageEncoding="ISO-8859-1"%>
           </li>
           <li class="collection-item">
             <div>
-              Transfer Funds<a href="transferForm.jsp" class="secondary-content"
-                ><i class="material-icons">forward</i></a
+              Get Statement By Date<a href="#" class="secondary-content"
+                ><i class="material-icons">functions</i></a
               >
+              <form action="statementByDate.jsp" method="post">
+              	<input type="text" name="dacc_id" placeholder="Enter your account Id"><br/>
+              	<input type="date" name="sdate" placeholder="Start date here"><br/>
+              	<input type="date" name="edate" placeholder="End Date"><br/>
+              	<input class="btn" type="submit" value="Get Statement">
+              </form>
             </div>
           </li>
-          <li class="collection-item">
-            <div>
-              Width draw<a href="transactionForm.jsp" class="secondary-content"
-                ><i class="material-icons">credit_card</i></a
-              >
-            </div>
-          </li>
-          <li class="collection-item">
-            <div>
-              Deposit<a href="transactionForm.jsp" class="secondary-content"
-                ><i class="material-icons">create_new_folder</i></a
-              >
-            </div>
-          </li>
+          
         </ul>
       </div>
 
@@ -139,6 +132,29 @@ pageEncoding="ISO-8859-1"%>
       </div><br/>
       <div class="col s3">
       	<a class="btn" onClick="window.print()">Print </a>
+      	<ul class="collection with-header">
+        	<li class="collection-item">
+            <div>
+              Transfer Funds<a href="transferForm.jsp" class="secondary-content"
+                ><i class="material-icons">forward</i></a
+              >
+            </div>
+          </li>
+          <li class="collection-item">
+            <div>
+              Width draw<a href="transactionForm.jsp" class="secondary-content"
+                ><i class="material-icons">credit_card</i></a
+              >
+            </div>
+          </li>
+          <li class="collection-item">
+            <div>
+              Deposit<a href="transactionForm.jsp" class="secondary-content"
+                ><i class="material-icons">create_new_folder</i></a
+              >
+            </div>
+          </li>
+      </ul>
       </div>
     	
     </div>

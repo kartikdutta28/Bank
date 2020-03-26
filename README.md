@@ -14,3 +14,9 @@
 
 ### FAQ Page
 ![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/faq.jpg)
+
+### Transfer Funds Form  Page
+![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/transfer.jpg)
+
+### Transaction Form Page Withraw/Deposit
+![alt text](https://github.com/kartikdutta28/Bank/blob/master/images/transaction.jpg)

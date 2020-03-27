@@ -1,6 +1,8 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -52,9 +54,12 @@ public class checkBookServlet extends HttpServlet {
 					+del_date+ "</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
-			response.getWriter().write("<div class='msg msg-error z-depth-3 scale-transition'>Check Book request Already Exists with delivery date "
-					+del_date+ "</div>");
-			request.getRequestDispatcher("userHome.jsp").include(request, response);
+			
+				response.getWriter().write("<div class='msg msg-error z-depth-3 scale-transition'>Check Book request Already Exists with delivery date "
+						+del_date.toLocaleString()+ "</div>");
+				request.getRequestDispatcher("userHome.jsp").include(request, response);
+			
+			
 		}
 		
 		doGet(request, response);

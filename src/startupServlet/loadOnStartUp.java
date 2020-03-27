@@ -50,6 +50,7 @@ public class loadOnStartUp extends HttpServlet {
 						
 					}
 				}
+				System.out.println("Account with "+rs.getInt(1)+" Was already unlocked");
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -57,7 +58,10 @@ public class loadOnStartUp extends HttpServlet {
 			try{
 				con.close();
 				ps.close();
-				ps2.close();
+				if(ps2!=null){
+					ps2.close();
+				}
+				
 			}catch(Exception e){
 				e.printStackTrace();
 			}

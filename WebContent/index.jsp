@@ -67,11 +67,9 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+            <input name="password" type="password" class="validate"/>
             <label for="password">Password</label>
-            <span class="helper-text" 
-            data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
-            data-success="Valid">Ex John@1234	</span>
+            
           </div>
         </div>
         <div class="row">

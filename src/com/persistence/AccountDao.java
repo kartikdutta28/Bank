@@ -18,7 +18,7 @@ public class AccountDao {
 	public void addAccount(Account account){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("insert into ACCOUNTS_INFO_V2 values(?,?,?,?,?,?,?,?)");
+			ps=connection.prepareStatement("insert into ACCOUNTS_INFO_V2 values(?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, account.getAccount_id());
 			ps.setInt(2, account.getUser_id());
 			ps.setString(3, account.getAccount_type());
@@ -28,7 +28,8 @@ public class AccountDao {
 			ps.setDate(5, sqlDate);
 			ps.setString(7, account.getUser_type());
 			ps.setString(8, account.getLock_stat());
-			ps.setDate(9, new java.sql.Date(account.getLock_date().getTime()));
+			ps.setNull(9, java.sql.Types.DATE);
+			//ps.setDate(9, new java.sql.Date(account.getLock_date().getTime()));
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

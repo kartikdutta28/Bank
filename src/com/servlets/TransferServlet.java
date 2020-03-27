@@ -53,6 +53,7 @@ public class TransferServlet extends HttpServlet {
 		Double ta=tr.getAmount(target_account);
 		boolean f=tr.checkCounter(account_id);
 		if(f==false){
+			tr.lockAccount(account_id);
 			out.write("<div class='msg msg-error z-depth-3 scale-transition'>You cant do more than 3 transactions a day</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{

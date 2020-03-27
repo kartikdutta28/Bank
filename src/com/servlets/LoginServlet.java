@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.persistence.ConnectionProvider;
 import com.persistence.UserDao;
 
 import oracle.net.aso.d;
@@ -23,6 +24,8 @@ public class LoginServlet extends HttpServlet {
     /**
      * Default constructor. 
      */
+	
+	
     public LoginServlet() {
         // TODO Auto-generated constructor stub
     }

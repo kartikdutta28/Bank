@@ -89,7 +89,6 @@ public class TransactionDao {
 	}
 	public void updateAccountForTrac(Double post_amount,int account_id){
 		try{
-			;
 			connection=cp.openConnection();
 			ps=connection.prepareStatement("update ACCOUNTS_INFO_V2 set amount=? where account_id=?");
 			ps.setDouble(1, post_amount);
@@ -218,5 +217,27 @@ public class TransactionDao {
 			}
 		}
 		return c;
+	}
+	public void lockAccount(int acc_id){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update ACCOUNTS_INFO_V2 set lock_stat=?,lock_date =? where account_id=?");
+			ps.setString(1, "L");
+			Date d=new Date();
+			java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+			ps.setDate(2, sqlDate);
+			ps.setInt(3, acc_id);
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				ps.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

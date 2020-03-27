@@ -8,13 +8,15 @@ public class Account {
 	private String account_type;
 	private double amount;
 	private Date creation_date;
-	public Account(int account_id, int user_id, String account_type, double amount, Date creation_date) {
+	private int counter;
+	public Account(int account_id, int user_id, String account_type, double amount, Date creation_date, int counter) {
 		super();
 		this.account_id = account_id;
 		this.user_id = user_id;
 		this.account_type = account_type;
 		this.amount = amount;
 		this.creation_date = creation_date;
+		this.counter = counter;
 	}
 	public int getAccount_id() {
 		return account_id;
@@ -46,7 +48,13 @@ public class Account {
 	public void setCreation_date(Date creation_date) {
 		this.creation_date = creation_date;
 	}
+	public int getCounter() {
+		return counter;
+	}
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 	public Account() {
-	
+		// TODO Auto-generated constructor stub
 	}
 }

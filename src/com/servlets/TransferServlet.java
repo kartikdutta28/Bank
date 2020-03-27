@@ -1,6 +1,7 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Random;
 
@@ -43,17 +44,26 @@ public class TransferServlet extends HttpServlet {
 		int target_account=Integer.parseInt(request.getParameter("target_account"));
 		Double amount = Double.parseDouble(request.getParameter("amount"));
 		String comments = request.getParameter("comments");
+		PrintWriter out=response.getWriter();
 		Random random=new Random();
 		int transaction_id=Integer.parseInt(String.format("%04d", random.nextInt(10000)));
 		TransferDao td=new TransferDao();
 		TransactionDao tr=new TransactionDao();
 		Double fa=tr.getAmount(account_id);
 		Double ta=tr.getAmount(target_account);
-		tr.updateAccount(fa-amount, account_id);
-		tr.updateAccount(ta+amount, target_account);
-		//td.fromOperation(account_id, amount,target_account);
-		td.addTransfer(new Transfer(transaction_id, account_id, target_account, amount, comments, new Date()));
-		request.getRequestDispatcher("userHome.jsp").forward(request, response);
+		int c=tr.checkCounter(account_id);
+		if(c==3){
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>You cant do more than 3 transactions a day</div>");
+			request.getRequestDispatcher("userHome.jsp").include(request, response);
+		}else{
+			tr.updateAccount(fa-amount, account_id,c);
+			tr.updateAccountForTrac(ta+amount, target_account);
+			//td.fromOperation(account_id, amount,target_account);
+			td.addTransfer(new Transfer(transaction_id, account_id, target_account, amount, comments, new Date()));
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Funds Sucessfully transfered</div>");
+			request.getRequestDispatcher("userHome.jsp").include(request, response);
+		}
+		
 		
 		
 		doGet(request, response);

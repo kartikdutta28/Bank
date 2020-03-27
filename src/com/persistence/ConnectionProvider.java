@@ -22,7 +22,7 @@ public class ConnectionProvider {
 	DataSource ds=(DataSource)envctx.lookup("jdbc/HRDB");
 	
 	con = ds.getConnection();
-	System.out.println(" ->. con " + con);
+	System.out.println(" ->. con " + con+" open");
 	return con;
 	}
 

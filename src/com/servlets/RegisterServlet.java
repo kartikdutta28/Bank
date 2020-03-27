@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
 				user_name, ph_no, password, 
 				transaction_password, email,utype,"O"));
 		AccountDao ad=new AccountDao();
-		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0));
+		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0,utype));
 		response.sendRedirect("index.jsp");
 	}
 

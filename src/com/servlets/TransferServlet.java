@@ -51,11 +51,12 @@ public class TransferServlet extends HttpServlet {
 		TransactionDao tr=new TransactionDao();
 		Double fa=tr.getAmount(account_id);
 		Double ta=tr.getAmount(target_account);
-		int c=tr.checkCounter(account_id);
-		if(c==3){
+		boolean f=tr.checkCounter(account_id);
+		if(f==false){
 			out.write("<div class='msg msg-error z-depth-3 scale-transition'>You cant do more than 3 transactions a day</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
+			int c=tr.getCounter(account_id);
 			tr.updateAccount(fa-amount, account_id,c);
 			tr.updateAccountForTrac(ta+amount, target_account);
 			//td.fromOperation(account_id, amount,target_account);

@@ -9,7 +9,9 @@ public class Account {
 	private double amount;
 	private Date creation_date;
 	private int counter;
-	public Account(int account_id, int user_id, String account_type, double amount, Date creation_date, int counter) {
+	private String user_type;
+	public Account(int account_id, int user_id, String account_type, double amount, Date creation_date, int counter,
+			String user_type) {
 		super();
 		this.account_id = account_id;
 		this.user_id = user_id;
@@ -17,6 +19,7 @@ public class Account {
 		this.amount = amount;
 		this.creation_date = creation_date;
 		this.counter = counter;
+		this.user_type = user_type;
 	}
 	public int getAccount_id() {
 		return account_id;
@@ -53,6 +56,12 @@ public class Account {
 	}
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+	public String getUser_type() {
+		return user_type;
+	}
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
 	}
 	public Account() {
 		// TODO Auto-generated constructor stub

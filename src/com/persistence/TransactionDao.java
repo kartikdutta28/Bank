@@ -163,8 +163,10 @@ public class TransactionDao {
 		}
 		return list;
 	}
-	public int checkCounter(int acc_id){
+	public boolean checkCounter(int acc_id){
 		int c=0;
+		String type="";
+		boolean flag=true;
 		try{
 			connection=cp.openConnection();
 			ps=connection.prepareStatement("select * from accounts_info_v2 where ACCOUNT_ID=?");
@@ -172,6 +174,37 @@ public class TransactionDao {
 			rs=ps.executeQuery();
 			if(rs.next()){
 				c=rs.getInt(6);
+				type+=rs.getString(7);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				ps.close();
+				rs.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(type.equals("N")&c==3){
+			flag=false;
+		}else if(type.equals("P")&c==5){
+			flag=false;
+		}
+		return flag;
+	}
+	public int getCounter(int acc_id){
+		int c=0;
+		
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from accounts_info_v2 where ACCOUNT_ID=?");
+			ps.setInt(1, acc_id);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				c=rs.getInt(6);
+				
 			}
 		}catch(Exception e){
 			e.printStackTrace();

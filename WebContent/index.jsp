@@ -2,7 +2,6 @@
 pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title>Saarthi Bank</title>
@@ -41,19 +40,18 @@ pageEncoding="ISO-8859-1"%>
   </head>
   <body>
     <jsp:include page="navbar.jsp"></jsp:include>
-    <%
-    	if(session.getAttribute("name")!=null){
-    		out.println("<div class='msg msg-alert z-depth-3'>Logged out sucessfully</div>");
-    		
-    		session.invalidate();
-    	}
-    %>
-    <br /><br /><br /><br />
+    <% if(session.getAttribute("name")!=null)
+    { 
+    	out.println("<div class='msg msg-alert z-depth-3'>Logged out sucessfully</div>"); 
+    	session.invalidate(); } %> <br /><br /><br /><br />
     <div class="row">
-      <div class="col s2"></div>    
+      <div class="col s2"></div>
       <form id="formid" class="col s6" action="LoginServlet" method="post">
-     <div class="card-panel deep-purple  lighten-5 hoverable ">Login if your'e existing user, Else 
-      	<a href="createAccount.jsp">Register Here</a> to create or open an account</div>
+        <div class="card-panel deep-purple  lighten-5 hoverable ">
+          Login if your'e existing user, Else
+          <a href="createAccount.jsp">Register Here</a> to create or open an
+          account
+        </div>
         <div class="row">
           <div class="right-align input-field col s6">
             <input
@@ -67,9 +65,8 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate"/>
+            <input name="password" type="password" class="validate" />
             <label for="password">Password</label>
-            
           </div>
         </div>
         <div class="row">
@@ -93,7 +90,12 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a onclick="M.toast({html: 'Login or create account first'})" class="btn"  href="#">Transfer Funds $</a>
+            <a
+              onclick="M.toast({html: 'Login or create account first'})"
+              class="btn"
+              href="#"
+              >Transfer Funds $</a
+            >
           </div>
         </div>
       </div>
@@ -107,7 +109,12 @@ pageEncoding="ISO-8859-1"%>
             </p>
           </div>
           <div class="card-action">
-            <a onclick="M.toast({html: 'Login or create account first'})" class="btn" href="#">Apply For Cheque Book</a>
+            <a
+              onclick="M.toast({html: 'Login or create account first'})"
+              class="btn"
+              href="#"
+              >Apply For Cheque Book</a
+            >
           </div>
         </div>
       </div>

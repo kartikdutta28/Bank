@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.model.Account"%>
 <%@page import="java.util.List"%>
 <%@page import="com.persistence.AccountDao"%>
@@ -16,29 +17,15 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" href="css/materialize.min.css" />
     <style>
       .msg {
-        width: 100%;
-        border: 1px solid;
-        padding: 10px;
-        margin: 20px;
-        color: grey;
-      }
-      .msg-error {
+        width: 100%;border: 1px solid;padding: 10px;margin: 20px;color: grey;
+      }.msg-error {
         // rouge
-        border-color: #d32f2f;
-        background-color: #ef5350;
-        color: white;
-      }
-      .msg-alert {
+        border-color: #d32f2f;background-color: #ef5350;color: white;
+      }.msg-alert {
         //orange
-        border-color: #ef6c00;
-        background-color: #ff9800;
-        color: white;
-      }
-
-      .msg-info {
-        border-color: #0288d1;
-        background-color: #29b6f6;
-        color: white;
+        border-color: #ef6c00;background-color: #ff9800;color: white;
+      }.msg-info {
+        border-color: #0288d1;background-color: #29b6f6;color: white;
       }
     </style>
   </head>
@@ -50,6 +37,7 @@ pageEncoding="ISO-8859-1"%>
     session.setAttribute("user", user);
     AccountDao ad=new AccountDao();
     List<Account> list=ad.getAccountInfo(user.getUser_id());
+    List<Integer> ids=new ArrayList<Integer>();
     %>
     <div class="row">
       <div class="col s3">
@@ -109,6 +97,7 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <%
 		for(Account a:list){
+			ids.add(a.getAccount_id());
 			String t="";
 			if(a.getAccount_type().equals("SV")){
 				t+="Savings Account";
@@ -163,7 +152,7 @@ pageEncoding="ISO-8859-1"%>
           </li>
       </ul>
       </div>
-    	
+    	<% session.setAttribute("ids", ids);%>
     </div>
 	
     <script type="text/javascript" src="js/materialize.min.js"></script>

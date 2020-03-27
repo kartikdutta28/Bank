@@ -16,13 +16,14 @@ pageEncoding="ISO-8859-1"%>
     <div class="row">
       <div class="col s2"></div>
       <form class="col s8" action="RegisterServlet" method="post">
-      <div class="row">
-      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to open account</b></div>
-      </div>
-      
+        <div class="row">
+          <div class="card-panel deep-purple  lighten-5 ">
+            <b>Fill the form below to open account</b>
+          </div>
+        </div>
         <div class="row">
           <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
+            <i class="material-icons prefix">account_circle</i>
             <input
               placeholder="Placeholder"
               name="first_name"
@@ -60,7 +61,7 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s12">
-          <i class="material-icons prefix">phone</i>
+            <i class="material-icons prefix">phone</i>
             <input
               placeholder="Phone Number(+91)"
               name="ph_no"
@@ -72,41 +73,42 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+            <input
+              name="password"
+              type="password"
+              class="validate"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              required
+            />
             <label for="password">Password</label>
-            <span class="helper-text" 
-            data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
-            data-success="Valid">Ex John@1234	</span>
+            <span
+              class="helper-text"
+              data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+              data-success="Valid"
+              >Ex John@1234
+            </span>
           </div>
-       
         </div>
         <div class="row">
           <div class="input-field col s6">
             <input name="email" type="email" class="validate" />
             <label for="email">Email</label>
           </div>
-           <div class="input-field col s6">
-    	
-    	<select name="type" class="browser-default">
-      <option value="SA">Salary Account</option>
-      <option value="SV">Savings Account</option>
-      
-    </select>
-    
-  </div>
-    		
-  		  </div>
-  		  <div class="row">
-  		  	<div class="input-field col s6">
-    	
-    		<select name="utype" class="browser-default">
-      		<option value="P">Premium User</option>
-      		<option value="N">Normal User</option>
-      
-    		</select>
-  		  </div>
-  		  </div>
-        
+          <div class="input-field col s6">
+            <select name="type" class="browser-default">
+              <option value="SA">Salary Account</option>
+              <option value="SV">Savings Account</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <select name="utype" class="browser-default">
+              <option value="P">Premium User</option>
+              <option value="N">Normal User</option>
+            </select>
+          </div>
+        </div>
         <div class="row">
           <div class="input-field col s12">
             <input name="amount" type="text" class="validate" />
@@ -129,6 +131,5 @@ pageEncoding="ISO-8859-1"%>
     <script src="jquery/jquery.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <jsp:include page="footer.jsp"></jsp:include>
-    
   </body>
 </html>

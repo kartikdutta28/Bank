@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -5,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Saarthi Bank</title>
 <style>
       .msg {
         width: 100%;
@@ -57,17 +58,21 @@
             <label for="user_id">User Id</label>
           </div>
         </div>
+        <%
+        	List<Integer> li=(List<Integer>)session.getAttribute("ids");
+        %>
         <div class="row">
-          <div class="right-align input-field col s6">
-            <input
-              placeholder="Your account_id"
-              name="account_id"
-              type="text"
-              class="validate"
-            />
+			<select name="account_id" class="browser-default">
+        		<%
+        			for(Integer i:li){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%>
+    		</select>
+			
             <label for="name">Account Id/Number</label>
           </div>
-        </div>
+        
         <div class="row">
           <div class="right-align input-field col s6">
             <input
@@ -81,9 +86,8 @@
         </div>
         <div class="input-field col s6">
         	<select name="type" class="browser-default" >
-      			<option value="D">Deposit</option>
-      			<option value="W">Withdraw</option>
-      
+     			<option value="W">Withdraw</option>
+     			<option value="D">Deposit</option> 			
     		</select>
     	</div>
     	<div class="row">

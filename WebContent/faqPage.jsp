@@ -11,11 +11,7 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<%
-		FaqDao dao=new FaqDao();
-		List<FAQ> li=dao.getAll();
-	%>
-	<br/><br/>
+	<% FaqDao dao=new FaqDao();List<FAQ> li=dao.getAll();%><br/><br/>
 	<div class="row">
       <div class="col s2"></div> 
       <form class="col s6" action="addFaqQuestion" method="post">
@@ -59,14 +55,13 @@
      	<div class="card-panel">
     		<span class="blue-text text-darken-2"><b>Frequently asked questions (FAQ)</b></span>
   		</div>
-     	<%
+    <%
 		for(FAQ f:li){
 			out.println("<div class='card-panel red accent-2 white-text text-darken-2'><b>Question :</b>"+f.getQuestion()+"</div>");
 			out.println("<div class='card-panel red accent-1 white-text text-darken-2'><b>Answer :</b>"+f.getAnswer()+"</div><br/>");
 			out.println(" <div class='divider'></div>");
-		}
-     	
-	%>
+    }
+    %>
 	</div>
      </div>
 	<jsp:include page="footer.jsp"></jsp:include>

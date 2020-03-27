@@ -11,7 +11,11 @@ pageEncoding="ISO-8859-1"%>
     />
     <link rel="stylesheet" href="css/materialize.min.css" />
   </head>
-  <body>
+  <style>
+  	
+  	
+  </style>
+  <body >
     <div class="navbar-fixed">
       <nav>
         <div class="nav-wrapper">

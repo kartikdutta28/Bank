@@ -22,6 +22,7 @@ pageEncoding="ISO-8859-1"%>
       
         <div class="row">
           <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
             <input
               placeholder="Placeholder"
               name="first_name"
@@ -59,6 +60,7 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
             <input
               placeholder="Phone Number(+91)"
               name="ph_no"

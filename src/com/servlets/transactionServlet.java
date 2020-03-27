@@ -58,10 +58,10 @@ public class transactionServlet extends HttpServlet {
 		td.addTransaction(new Transaction(transaction_id, user_id, account_id, amount, post_amt, type, comments,new Date()));
 		td.updateAccount(post_amt, account_id);
 		if(type.equals("D")){
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Amount sucessfully deposited</div>");
+			out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully deposited</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Amount sucessfully withdrawn</div>");
+			out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully withdrawn</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}
 		doGet(request, response);

@@ -79,11 +79,20 @@
     <servlet-name>TransferServlet</servlet-name>
     <url-pattern>/TransferServlet</url-pattern>
   </servlet-mapping>
-  
   <resource-ref>
-  	<description>DB Connection</description>
-  	<res-ref-name>jdbc/HRDB</res-ref-name>
-  	<res-type>javax.sql.DataSource</res-type>
-  	<res-auth>Container</res-auth>
+    <description>DB Connection</description>
+    <res-ref-name>jdbc/HRDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
   </resource-ref>
+  <servlet>
+    <description></description>
+    <display-name>checkBookServlet</display-name>
+    <servlet-name>checkBookServlet</servlet-name>
+    <servlet-class>com.servlets.checkBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>checkBookServlet</servlet-name>
+    <url-pattern>/checkBookServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -43,6 +43,9 @@
 	<div class="row">
       <div class="col s2"></div> 
       <form class="col s6" action="transactionServlet" method="post">
+      <div class="row">
+      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to withdraw/deposit amount</b></div>
+      </div>
         <div class="row">
           <div class="right-align input-field col s6">
             <input 
@@ -77,7 +80,7 @@
           </div>
         </div>
         <div class="input-field col s6">
-        	<select name="type" class="browser-default">
+        	<select name="type" class="browser-default" >
       			<option value="D">Deposit</option>
       			<option value="W">Withdraw</option>
       
@@ -86,6 +89,7 @@
     	<div class="row">
           <div class="right-align input-field col s6">
             <input
+              
               placeholder="Add comments here"
               name="comments"
               type="text"

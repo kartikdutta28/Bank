@@ -13,6 +13,9 @@
 	<div class="row">
       <div class="col s2"></div> 
       <form class="col s6" action="TransferServlet" method="post">
+      <div class="row">
+      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to transfer funds</b></div>
+      </div>
         <div class="row">
           <div class="right-align input-field col s6">
             <input

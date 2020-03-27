@@ -154,6 +154,13 @@ pageEncoding="ISO-8859-1"%>
               >
             </div>
           </li>
+          <li class="collection-item">
+            <div>
+              Request CheckBook<a href="checkBookRequestForm.jsp" class="secondary-content"
+                ><i class="material-icons">create_new_folder</i></a
+              >
+            </div>
+          </li>
       </ul>
       </div>
     	

@@ -44,7 +44,7 @@ public class TransactionDao {
 		Double amt=0.0;
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("select amount from ACCOUNTS_INFO where account_id=?");
+			ps=connection.prepareStatement("select amount from ACCOUNTS_INFO_V2 where account_id=?");
 			ps.setInt(1, account_id);
 			rs=ps.executeQuery();
 			if(rs.next()){
@@ -65,10 +65,32 @@ public class TransactionDao {
 		}
 		return amt;
 	}
-	public void updateAccount(Double post_amount,int account_id){
+	public void updateAccount(Double post_amount,int account_id,int c){
+		try{
+			c=c+1;
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update ACCOUNTS_INFO_V2 set amount=?,counter=? where account_id=?");
+			ps.setDouble(1, post_amount);
+			ps.setInt(2, c);
+			ps.setInt(3, account_id);
+			
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				ps.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	public void updateAccountForTrac(Double post_amount,int account_id){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("update ACCOUNTS_INFO set amount=? where account_id=?");
+			ps=connection.prepareStatement("update ACCOUNTS_INFO_V2 set amount=? where account_id=?");
 			ps.setDouble(1, post_amount);
 			ps.setInt(2, account_id);
 			ps.executeUpdate();
@@ -139,5 +161,83 @@ public class TransactionDao {
 			}
 		}
 		return list;
+	}
+	public boolean checkCounter(int acc_id){
+		int c=0;
+		String type="";
+		boolean flag=true;
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from accounts_info_v2 where ACCOUNT_ID=?");
+			ps.setInt(1, acc_id);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				c=rs.getInt(6);
+				type+=rs.getString(7);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				ps.close();
+				rs.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if(type.equals("N")&c==3){
+			flag=false;
+		}else if(type.equals("P")&c==5){
+			flag=false;
+		}
+		return flag;
+	}
+	public int getCounter(int acc_id){
+		int c=0;
+		
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from accounts_info_v2 where ACCOUNT_ID=?");
+			ps.setInt(1, acc_id);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				c=rs.getInt(6);
+				
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				ps.close();
+				rs.close();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return c;
+	}
+	public void lockAccount(int acc_id){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update ACCOUNTS_INFO_V2 set lock_stat=?,lock_date =? where account_id=?");
+			ps.setString(1, "L");
+			Date d=new Date();
+			java.sql.Date sqlDate = new java.sql.Date(d.getTime());
+			ps.setDate(2, sqlDate);
+			ps.setInt(3, acc_id);
+			ps.executeUpdate();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				ps.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

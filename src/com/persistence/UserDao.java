@@ -16,7 +16,7 @@ public class UserDao {
 	public void addUser(User user){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("insert into USERS_INFO values(?,?,?,?,?,?,?,?,?)");
+			ps=connection.prepareStatement("insert into USERS_INFO_V2 values(?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1,user.getUser_id());
 			ps.setString(2,user.getFirst_name());
 			ps.setString(3, user.getLast_name());
@@ -26,14 +26,17 @@ public class UserDao {
 			ps.setString(7, user.getPassword());
 			ps.setString(8,user.getTransaction_password());
 			ps.setString(9, user.getEmail());
-			
+			ps.setString(10, user.getUser_Type());
+			ps.setString(11, user.getLog_status());
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -43,12 +46,15 @@ public class UserDao {
 		boolean flag=false;
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("select * from USERS_INFO where user_name=? and password=?");
+			ps=connection.prepareStatement("select * from USERS_INFO_V2 where user_name=? and password=?");
 			ps.setString(1, name);
 			ps.setString(2, pwd);
 			rs=ps.executeQuery();
 			if(rs.next()){
-				flag=true;
+				if(rs.getString(11).equals("O")){
+					flag=true;
+				}
+				
 			}
 			ps.executeUpdate();
 		}catch(Exception e){
@@ -56,9 +62,11 @@ public class UserDao {
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
-			}catch(Exception e){
-				e.printStackTrace();
+				System.out.println(" ->. ps " + ps+" closed");			
+			   }catch(Exception e){
+				   e.printStackTrace();
 			}
 		}
 		
@@ -68,13 +76,14 @@ public class UserDao {
 		User user=null;
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("select * from users_info where user_name=? and password=?");
+			ps=connection.prepareStatement("select * from users_info_V2 where user_name=? and password=?");
 			ps.setString(1, user_name);
 			ps.setString(2, pwd);
 			rs=ps.executeQuery();
 			if(rs.next()){
 				user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
-						rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
+						rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),
+						rs.getString(11));
 				
 			}
 			ps.executeUpdate();
@@ -83,7 +92,9 @@ public class UserDao {
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -91,5 +102,26 @@ public class UserDao {
 		
 		return user;
 	}
+	public void lockUser(String name){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update users_info_v2 set logstatus=? where user_name=?");
+			ps.setString(1, "L");
+			ps.setString(2, name);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	
 }

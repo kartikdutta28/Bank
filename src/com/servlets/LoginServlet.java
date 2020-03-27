@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.persistence.ConnectionProvider;
 import com.persistence.UserDao;
 
+import oracle.net.aso.d;
 import oracle.net.ns.SessionAtts;
 
 /**
@@ -22,6 +24,8 @@ public class LoginServlet extends HttpServlet {
     /**
      * Default constructor. 
      */
+	
+	
     public LoginServlet() {
         // TODO Auto-generated constructor stub
     }
@@ -50,6 +54,7 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			n++;
 			if(n==3){
+				dao.lockUser(name);
 				out.write("<div class='msg msg-error z-depth-3 scale-transition'>Your account Has been blocked try after 24 hours</div>");
 				request.getRequestDispatcher("index.jsp").include(request, response);
 			}

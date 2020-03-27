@@ -48,7 +48,7 @@ public class addnewAccountServlet extends HttpServlet {
 		int user_id=user.getUser_id();
 		Double amount=Double.parseDouble(request.getParameter("amount"));
 		String type=request.getParameter("type");
-		ad.addAccount(new Account(account_id, user_id, type, amount, new Date()));
+		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0,user.getUser_Type(),"U",null));
 		request.getRequestDispatcher("userHome.jsp").forward(request, response);
 		doGet(request, response);
 	}

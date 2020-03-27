@@ -53,10 +53,13 @@ public class RegisterServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		Float amount=Float.parseFloat(request.getParameter("amount"));
 		String type=request.getParameter("type");
+		String utype=request.getParameter("utype");
 		UserDao dao=new UserDao();
-		dao.addUser(new User(user_id, first_name, last_name, address, user_name, ph_no, password, transaction_password, email));
+		dao.addUser(new User(user_id, first_name, last_name, address, 
+				user_name, ph_no, password, 
+				transaction_password, email,utype,"O"));
 		AccountDao ad=new AccountDao();
-		ad.addAccount(new Account(account_id, user_id, type, amount, new Date()));
+		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0,utype,"U",null));
 		response.sendRedirect("index.jsp");
 	}
 

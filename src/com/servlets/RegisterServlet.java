@@ -57,7 +57,7 @@ public class RegisterServlet extends HttpServlet {
 		UserDao dao=new UserDao();
 		dao.addUser(new User(user_id, first_name, last_name, address, 
 				user_name, ph_no, password, 
-				transaction_password, email,utype,"O"));
+				transaction_password, email,utype,"O",null));
 		AccountDao ad=new AccountDao();
 		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0,utype,"U",null));
 		response.sendRedirect("index.jsp");

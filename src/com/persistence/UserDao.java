@@ -1,6 +1,7 @@
 package com.persistence;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -16,7 +17,7 @@ public class UserDao {
 	public void addUser(User user){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("insert into USERS_INFO_V2 values(?,?,?,?,?,?,?,?,?,?,?)");
+			ps=connection.prepareStatement("insert into USERS_INFO_V2 values(?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1,user.getUser_id());
 			ps.setString(2,user.getFirst_name());
 			ps.setString(3, user.getLast_name());
@@ -28,6 +29,7 @@ public class UserDao {
 			ps.setString(9, user.getEmail());
 			ps.setString(10, user.getUser_Type());
 			ps.setString(11, user.getLog_status());
+			ps.setNull(12, java.sql.Types.DATE);
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -83,7 +85,7 @@ public class UserDao {
 			if(rs.next()){
 				user=new User(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
 						rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),
-						rs.getString(11));
+						rs.getString(11),rs.getDate(12));
 				
 			}
 			ps.executeUpdate();
@@ -105,9 +107,11 @@ public class UserDao {
 	public void lockUser(String name){
 		try{
 			connection=cp.openConnection();
-			ps=connection.prepareStatement("update users_info_v2 set logstatus=? where user_name=?");
+			ps=connection.prepareStatement("update users_info_v2 set logstatus=? ,lock_date=? where user_name=?");
 			ps.setString(1, "L");
-			ps.setString(2, name);
+			
+			ps.setDate(2,java.sql.Date.valueOf(java.time.LocalDate.now()));
+			ps.setString(3, name);
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

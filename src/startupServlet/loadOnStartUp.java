@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,8 +35,11 @@ public class loadOnStartUp extends HttpServlet {
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
 				if(rs.getString(8).equals("L")){
-					java.util.Date date=new java.util.Date();
+					Date date=java.sql.Date.valueOf(java.time.LocalDate.now());
+					
+					System.out.println(date);
 					Date sqld=rs.getDate(9);
+					System.out.println(sqld);
 					if(date.compareTo(sqld)>0){
 						ps2=con.prepareStatement("update accounts_info_v2 set lock_stat=?,"
 								+ "lock_date=?,counter=? where account_id=?");
@@ -64,6 +68,43 @@ public class loadOnStartUp extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+			try{
+				con=cp.openConnection();
+				ps=con.prepareStatement("select * from users_info_v2");
+				ResultSet rs=ps.executeQuery();
+				while(rs.next()){
+					if(rs.getString(11).equals("L")){
+						Date date=java.sql.Date.valueOf(java.time.LocalDate.now());
+						Date sqld=rs.getDate(12);
+						if(date.compareTo(sqld)>0){
+							ps2=con.prepareStatement("update users_info_v2 set logstatus=?,"
+									+ "lock_date=? where user_id=?");
+							ps2.setString(1, "O");
+							ps2.setDate(2, null);
+							ps2.setInt(3, rs.getInt(1));
+							int n=ps2.executeUpdate();
+							System.out.println("Login for account "+rs.getInt(1)+" have been unlocked");
+							
+						}
+					}
+					System.out.println("User with "+rs.getInt(1)+" Was already unlocked");
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally{
+				try{
+					con.close();
+					ps.close();
+					if(ps2!=null){
+						ps2.close();
+					}
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		
 		
 		
 	}

@@ -12,7 +12,8 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" href="css/materialize.min.css" />
   </head>
   <style>
-  	
+  	body{
+  	background-color: #757575  ;}
   	
   </style>
   <body >

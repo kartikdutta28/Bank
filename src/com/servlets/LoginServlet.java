@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("index.jsp").include(request, response);
 			}
 			
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Invalid username or password</div>");
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Invalid username or  you have "+(3-n)+" attempts left before your account gets locked</div>");
 			request.getRequestDispatcher("index.jsp").include(request, response);
 		}
 		doGet(request, response);

@@ -38,6 +38,9 @@ pageEncoding="ISO-8859-1"%>
     AccountDao ad=new AccountDao();
     List<Account> list=ad.getAccountInfo(user.getUser_id());
     List<Integer> ids=new ArrayList<Integer>();
+    for(Account a:list){
+    	ids.add(a.getAccount_id());
+    }
     %>
     <div class="row">
       <div class="col s3">
@@ -57,7 +60,13 @@ pageEncoding="ISO-8859-1"%>
                 ><i class="material-icons">functions</i></a
               >
               <form action="statement.jsp" method="post">
-              	<input type="text" name="acc_id" placeholder="Enter your account Id"><br/>
+              	<select name="acc_id" class="browser-default">
+        		<%
+        			for(Integer i:ids){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%>
+    		</select>
               	<input type="text" name="rows" placeholder="Enter the no of transactions you wish to see">
               	<input class="btn" type="submit" value="Get Statement">
               </form>
@@ -97,7 +106,7 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <%
 		for(Account a:list){
-			ids.add(a.getAccount_id());
+		
 			String t="";
 			if(a.getAccount_type().equals("SV")){
 				t+="Savings Account";

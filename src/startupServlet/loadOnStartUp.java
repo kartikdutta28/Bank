@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.persistence.ConnectionProvider;
 
-/**
- * Servlet implementation class loadOnStartUp
- */
+
 public class loadOnStartUp extends HttpServlet {
 	public ConnectionProvider cp=new ConnectionProvider();
 	public Connection con;

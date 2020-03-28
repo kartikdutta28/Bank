@@ -70,7 +70,7 @@ pageEncoding="ISO-8859-1"%>
             <div>
               Get Statement By Date<a href="#" class="secondary-content"
                 ><i class="material-icons">functions</i></a
-              ><br/><label for="dacc_id">Select account id</label>
+              ><br/>
               <form action="statementByDate.jsp" method="post">
 
                 <label for="dacc_id">Select account id</label>
@@ -93,7 +93,7 @@ pageEncoding="ISO-8859-1"%>
         </ul>
       </div>
 
-      <div class="col s6">
+      <div class="col s7">
         <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title"
@@ -132,9 +132,10 @@ pageEncoding="ISO-8859-1"%>
 		}
 	%>  
       </div><br/>
-      <div class="col s3">
+      <div class="col s2">
       	<a class="btn" onClick="window.print()">Print </a>
       	<ul class="collection with-header">
+      	<li class="collection-header"><h4>Quick Links</h4></li>
         	<li class="collection-item">
             <div>
               Transfer Funds<a href="transferForm.jsp" class="secondary-content"

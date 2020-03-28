@@ -49,17 +49,11 @@ pageEncoding="ISO-8859-1"%>
           <li class="collection-header"><h4>Quick Links</h4></li>
           <li class="collection-item">
             <div>
-              Request CheckBook<a href="#!" class="secondary-content"
-                ><i class="material-icons">book</i></a
-              >
-            </div>
-          </li>
-          <li class="collection-item">
-            <div>
               Get Statement<a href="#" class="secondary-content"
                 ><i class="material-icons">functions</i></a
               >
               <form action="statement.jsp" method="post">
+              <label for="acc_id">Select account id</label>
               	<select name="acc_id" class="browser-default">
         		<%
         			for(Integer i:ids){
@@ -76,10 +70,18 @@ pageEncoding="ISO-8859-1"%>
             <div>
               Get Statement By Date<a href="#" class="secondary-content"
                 ><i class="material-icons">functions</i></a
-              >
+              ><br/><label for="dacc_id">Select account id</label>
               <form action="statementByDate.jsp" method="post">
-              	<input type="text" name="dacc_id" placeholder="Enter your account Id"><br/>
+              	<select name="dacc_id" class="browser-default">
+        		<%
+        			for(Integer i:ids){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%></select><br/>
+    			
+              	<label for="sdate">Select Start date</label>
               	<input type="date" name="sdate" placeholder="Start date here"><br/>
+              	<label for="edate">Select end date</label>
               	<input type="date" name="edate" placeholder="End Date"><br/>
               	<input class="btn" type="submit" value="Get Statement">
               </form>

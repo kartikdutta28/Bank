@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Date;
+
 public class User {
 	private int user_id;
 	private String first_name;
@@ -12,8 +14,10 @@ public class User {
 	private String email;
 	private String user_Type;
 	private String log_status;
+	private Date lockDate;
 	public User(int user_id, String first_name, String last_name, String address, String user_name, String phone_number,
-			String password, String transaction_password, String email, String user_Type, String log_status) {
+			String password, String transaction_password, String email, String user_Type, String log_status,
+			Date lockDate) {
 		super();
 		this.user_id = user_id;
 		this.first_name = first_name;
@@ -26,6 +30,7 @@ public class User {
 		this.email = email;
 		this.user_Type = user_Type;
 		this.log_status = log_status;
+		this.lockDate = lockDate;
 	}
 	public int getUser_id() {
 		return user_id;
@@ -93,8 +98,11 @@ public class User {
 	public void setLog_status(String log_status) {
 		this.log_status = log_status;
 	}
-	public User() {
-	
+	public Date getLockDate() {
+		return lockDate;
+	}
+	public void setLockDate(Date lockDate) {
+		this.lockDate = lockDate;
 	}
 	
 	

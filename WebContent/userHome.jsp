@@ -72,16 +72,18 @@ pageEncoding="ISO-8859-1"%>
                 ><i class="material-icons">functions</i></a
               ><br/><label for="dacc_id">Select account id</label>
               <form action="statementByDate.jsp" method="post">
+
+                <label for="dacc_id">Select account id</label>
               	<select name="dacc_id" class="browser-default">
         		<%
         			for(Integer i:ids){
         				out.println("<option value='"+i+"'>"+i+"</option>");		
         			}
-        		%></select><br/>
-    			
-              	<label for="sdate">Select Start date</label>
-              	<input type="date" name="sdate" placeholder="Start date here"><br/>
-              	<label for="edate">Select end date</label>
+        		%>
+        </select>
+        <label for="sdate">Select start date</label>
+                <input type="date" name="sdate" placeholder="Start date here"><br/>
+                <label for="edate">Select end date</label>
               	<input type="date" name="edate" placeholder="End Date"><br/>
               	<input class="btn" type="submit" value="Get Statement">
               </form>

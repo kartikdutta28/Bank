@@ -78,7 +78,13 @@ pageEncoding="ISO-8859-1"%>
                 ><i class="material-icons">functions</i></a
               >
               <form action="statementByDate.jsp" method="post">
-              	<input type="text" name="dacc_id" placeholder="Enter your account Id"><br/>
+              	<select name="dacc_id" class="browser-default">
+        		<%
+        			for(Integer i:ids){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%>
+    		</select>
               	<input type="date" name="sdate" placeholder="Start date here"><br/>
               	<input type="date" name="edate" placeholder="End Date"><br/>
               	<input class="btn" type="submit" value="Get Statement">

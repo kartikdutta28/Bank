@@ -45,7 +45,7 @@
       <div class="col s2"></div> 
       <form class="col s6" action="transactionServlet" method="post">
       <div class="row">
-      	<div class="card-panel deep-purple  lighten-5 "><b>Fill the form below to withdraw/deposit amount</b></div>
+      	<div class="card-panel deep-purple  lighten-5 hoverable">Fill the form below to withdraw/deposit amount</div>
       </div>
         <div class="row">
           <div class="right-align input-field col s6">

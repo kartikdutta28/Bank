@@ -25,7 +25,14 @@ pageEncoding="ISO-8859-1"%>
             Bank</a
           >
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.jsp">Login</a></li>
+          	<%
+            	if(session.getAttribute("name")==null){
+            		out.println("<li><a href='index.jsp'>Login</a></li>");
+            	}else{
+            		out.println("<li><a href='userHome.jsp'>User Home</a></li>");
+            	}
+            %>
+            
             <li><a href="createAccount.jsp">Create New Account</a></li>
             <%
             	if(session.getAttribute("name")!=null){

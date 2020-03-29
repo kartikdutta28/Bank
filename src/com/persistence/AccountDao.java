@@ -59,4 +59,22 @@ public class AccountDao {
 		}
 		return list;
 	}
+	public List<Account> getAccountInfoExcept(int user_id){
+		List<Account> list=new ArrayList<Account>();
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from ACCOUNTS_INFO_V2 where USER_ID!=? " );
+			ps.setInt(1, user_id);
+			rs=ps.executeQuery();
+			while(rs.next()){
+				list.add(new Account(rs.getInt(1), rs.getInt(2), 
+						rs.getString(3), rs.getDouble(4), 
+						rs.getDate(5),rs.getInt(6),rs.getString(7),rs.getString(8),rs.getDate(9)));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }

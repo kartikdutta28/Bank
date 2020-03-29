@@ -36,7 +36,7 @@ pageEncoding="ISO-8859-1"%>
             		out.println("<li><a href='transactionForm.jsp'>Withdraw</a></li>");
             	}
             %>
-            <li><a href="transactionForm.jsp">Transfer</a></li>
+            <li><a href="transferForm.jsp">Transfer</a></li>
             <li><a href="faqPage.jsp">FAQ</a>
             <%
             	if(session.getAttribute("name")!=null){

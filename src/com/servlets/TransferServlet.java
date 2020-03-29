@@ -50,21 +50,29 @@ public class TransferServlet extends HttpServlet {
 		TransferDao td=new TransferDao();
 		TransactionDao tr=new TransactionDao();
 		Double fa=tr.getAmount(account_id);
-		Double ta=tr.getAmount(target_account);
-		boolean f=tr.checkCounter(account_id);
-		if(f==false){
-			tr.lockAccount(account_id);
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>You cant do more than 3 transactions a day</div>");
+		if(amount>fa){
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Transfer Failed !! "
+					+ "You Dont have enough funds in your account to transfer</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
-			int c=tr.getCounter(account_id);
-			tr.updateAccount(fa-amount, account_id,c);
-			tr.updateAccountForTrac(ta+amount, target_account);
-			//td.fromOperation(account_id, amount,target_account);
-			td.addTransfer(new Transfer(transaction_id, account_id, target_account, amount, comments, new Date()));
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Funds Sucessfully transfered</div>");
-			request.getRequestDispatcher("userHome.jsp").include(request, response);
+			Double ta=tr.getAmount(target_account);
+			
+			boolean f=tr.checkCounter(account_id);
+			if(f==false){
+				tr.lockAccount(account_id);
+				out.write("<div class='msg msg-error z-depth-3 scale-transition'>You cant do more than 3 transactions a day</div>");
+				request.getRequestDispatcher("userHome.jsp").include(request, response);
+			}else{
+				int c=tr.getCounter(account_id);
+				tr.updateAccount(fa-amount, account_id,c);
+				tr.updateAccountForTrac(ta+amount, target_account);
+				//td.fromOperation(account_id, amount,target_account);
+				td.addTransfer(new Transfer(transaction_id, account_id, target_account, amount, comments, new Date()));
+				out.write("<div class='msg msg-error z-depth-3 scale-transition'>Funds Sucessfully transfered</div>");
+				request.getRequestDispatcher("userHome.jsp").include(request, response);
+			}
 		}
+		
 		
 		
 		

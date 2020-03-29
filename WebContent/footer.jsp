@@ -10,16 +10,6 @@ pageEncoding="ISO-8859-1"%>
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/materialize.min.css" />
-    <style>
-    	body {
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-    </style>
   </head>
   <body>
     <footer class="page-footer">

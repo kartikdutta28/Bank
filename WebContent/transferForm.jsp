@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -18,24 +19,32 @@
       </div>
         <div class="row">
           <div class="right-align input-field col s6">
-            <input
-              placeholder="Your account Id"
-              name="from_account"
-              type="text"
-              class="validate"
-            />
-            <label for="name">Your Account Id/Number</label>
-          </div>
+          <%
+        	List<Integer> li=(List<Integer>)session.getAttribute("ids");
+           %>
+            <select name="from_account" class="browser-default">
+            	<option value="" disabled selected>Your Account Id/Number</option>
+        		<%
+        			for(Integer i:li){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%>
+    		</select>
+		   </div>
         </div>
         <div class="row">
           <div class="right-align input-field col s6">
-            <input
-              placeholder="Target account Id"
-              name="target_account"
-              type="text"
-              class="validate"
-            />
-            <label for="name">Target Account Id/Number</label>
+            <%
+        	List<Integer> li2=(List<Integer>)session.getAttribute("toids");
+           %>
+            <select name="target_account" class="browser-default">
+            	<option value="" disabled selected>Target Account Id/Number</option>
+        		<%
+        			for(Integer i:li2){
+        				out.println("<option value='"+i+"'>"+i+"</option>");		
+        			}
+        		%>
+    		</select>
           </div>
         </div>
         <div class="row">

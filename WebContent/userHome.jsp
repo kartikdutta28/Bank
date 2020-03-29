@@ -37,9 +37,14 @@ pageEncoding="ISO-8859-1"%>
     session.setAttribute("user", user);
     AccountDao ad=new AccountDao();
     List<Account> list=ad.getAccountInfo(user.getUser_id());
+    List<Account> list2=ad.getAccountInfoExcept(user.getUser_id());
     List<Integer> ids=new ArrayList<Integer>();
+    List<Integer> toids=new ArrayList<Integer>();
     for(Account a:list){
     	ids.add(a.getAccount_id());
+    }
+    for(Account a:list2){
+    		toids.add(a.getAccount_id());
     }
     %>
     <div class="row">
@@ -167,6 +172,7 @@ pageEncoding="ISO-8859-1"%>
       </ul>
       </div>
     	<% session.setAttribute("ids", ids);%>
+    	<% session.setAttribute("toids", toids); %>
     </div>
 	
     <script type="text/javascript" src="js/materialize.min.js"></script>

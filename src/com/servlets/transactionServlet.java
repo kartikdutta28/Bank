@@ -50,20 +50,28 @@ public class transactionServlet extends HttpServlet {
 		Double curr_amount=td.getAmount(account_id);
 		Double post_amt=0.0;
 		PrintWriter out=response.getWriter();
-		if(type.equalsIgnoreCase("D")){
-			post_amt=curr_amount+amount;
-		}else{
-			post_amt=curr_amount-amount;
-		}
-		td.addTransaction(new Transaction(transaction_id, user_id, account_id, amount, post_amt, type, comments,new Date()));
-		td.updateAccountForTrac(post_amt, account_id);
-		if(type.equals("D")){
-			out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully deposited</div>");
+		Double balance=td.getAmount(account_id);
+		if(balance<amount && type.equalsIgnoreCase("W")){
+			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Withdrawl Failed !"
+					+ "Sorry amount is more than your Balance");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
-			out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully withdrawn</div>");
-			request.getRequestDispatcher("userHome.jsp").include(request, response);
+			if(type.equalsIgnoreCase("D")){
+				post_amt=curr_amount+amount;
+			}else{
+				post_amt=curr_amount-amount;
+			}
+			td.addTransaction(new Transaction(transaction_id, user_id, account_id, amount, post_amt, type, comments,new Date()));
+			td.updateAccountForTrac(post_amt, account_id);
+			if(type.equals("D")){
+				out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully deposited</div>");
+				request.getRequestDispatcher("userHome.jsp").include(request, response);
+			}else{
+				out.write("<div class='msg msg-info z-depth-3'>Amount sucessfully withdrawn</div>");
+				request.getRequestDispatcher("userHome.jsp").include(request, response);
+			}
 		}
+		
 		doGet(request, response);
 	}
 

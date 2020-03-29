@@ -78,6 +78,15 @@ contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
               <option value="SV">Savings Account</option>
             </select>
           </div>
+          
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <select name="utype" class="browser-default">
+              <option value="P">Premium User</option>
+              <option value="N">Normal User</option>
+            </select>
+          </div>
         </div>
         <div class="row">
           <div class="input-field col s12">

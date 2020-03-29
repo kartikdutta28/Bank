@@ -1,3 +1,5 @@
+<%@page import="com.model.CheckBook"%>
+<%@page import="com.persistence.CheckBookDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.Account"%>
 <%@page import="java.util.List"%>
@@ -99,6 +101,7 @@ pageEncoding="ISO-8859-1"%>
       </div>
 
       <div class="col s7">
+      	
         <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
             <span class="card-title"
@@ -117,24 +120,36 @@ pageEncoding="ISO-8859-1"%>
 		for(Account a:list){
 		
 			String t="";
+			String p="";
 			if(a.getAccount_type().equals("SV")){
 				t+="Savings Account";
 			}else{
 				t+="Salary Account";
+			}if(a.getUser_type().equals("N")){
+				p+="Normal User Account with max 3 transfers a day";
+			}else{
+				p+="Premium User Account with max 5 transfers a day";
 			}
 			String id=String.valueOf(a.getAccount_id());
+			CheckBookDao ck=new CheckBookDao();
+			CheckBook c=ck.getStatus(a.getAccount_id());
 			out.println("<div class='col s6'>"+
 			        "<div class='card teal darken-1 hoverable'>"+
 	          "<div class='card-content white-text'>"+
 	            "<span class='card-title'>"+
-	          "<b>Account no : </b>"+id.substring(0,2)+"-"+id.substring(2, 5)+"-"+id.subSequence(5,8)+"</span>"+
-	            "<p><b>Amount : $</b>"+a.getAmount()+"</p>"+
-	          	"<p><b>Account Type : </b>"+t+"</p>"+
-	          	"<p><b>Account Creation date : </b>"+a.getCreation_date()+"</p>"+
-	          "</div>"+
-	        "</div>"+
-	      "</div>");
-		}
+	          "<b>Account no : </b>"+id+"</span>"+
+	            "<p><b class='black-text'>Amount : $</b>"+a.getAmount()+"</p>"+
+	          	"<p><b class='black-text'>Account Type : </b>"+t+"</p>"+
+	          	"<p><b class='black-text'>Account Creation date : </b>"+a.getCreation_date()+"</p>"+
+	          	"<p><b class='black-text'>Account Priviledge type : </b>"+p+"</p>");
+	          	if(c!=null){
+	          		out.write("<p class='yellow-text'><b>Check book request already exists with delivery date "+c.getDelivery_date()
+	          		+" and with status "+c.getRequest_status()+"</b></p>");
+	          	}else{
+	          		out.write("<p class='yellow-text'>No checkbook request exists</p>");
+	          	}
+	          out.write("</div>"+"</div>"+"</div>");
+	       }
 	%>  
       </div><br/>
       <div class="col s2">
@@ -165,7 +180,14 @@ pageEncoding="ISO-8859-1"%>
           <li class="collection-item">
             <div>
               Request CheckBook<a href="checkBookRequestForm.jsp" class="secondary-content"
-                ><i class="material-icons">create_new_folder</i></a
+                ><i class="material-icons">credit_card</i></a
+              >
+            </div>
+          </li>
+          <li class="collection-item">
+            <div>
+              	Change Address<a href="changeAddressForm.jsp" class="secondary-content"
+                ><i class="material-icons">forward</i></a
               >
             </div>
           </li>

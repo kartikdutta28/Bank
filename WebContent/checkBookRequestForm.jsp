@@ -12,6 +12,7 @@ pageEncoding="ISO-8859-1"%>
     <div class="row">
       <div class="col s2"></div>
       <form class="col s6" action="checkBookServlet" method="post">
+      
         <div class="row">
           <div class="card-panel deep-purple  lighten-5 ">
             <b>Fill the form below to request a check Book</b>

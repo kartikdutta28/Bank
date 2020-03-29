@@ -36,7 +36,9 @@ public class AccountDao {
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -56,6 +58,17 @@ public class AccountDao {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}
@@ -73,6 +86,17 @@ public class AccountDao {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}

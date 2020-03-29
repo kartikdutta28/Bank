@@ -30,11 +30,15 @@ public class CheckBookDao {
 				flag=true;
 			}catch (Exception e) {
 				e.printStackTrace();
-			}try{
-				connection.close();
-				ps.close();
-			}catch(Exception e){
-				e.printStackTrace();
+			}finally {
+				try{
+					connection.close();
+					System.out.println(" ->. con " + connection+" closed");
+					ps.close();
+					System.out.println(" ->. ps " + ps+" closed");
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 			}
 		}
 		
@@ -52,13 +56,44 @@ public class CheckBookDao {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-		}try{
-			connection.close();
-			ps.close();
-			rs.close();
-		}catch(Exception e){
-			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		return flag;
+	}
+	public CheckBook getStatus(int account_id){
+		CheckBook ck=null;
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from checkbook_info where ACCOUNT_ID=?");
+			ps.setInt(1, account_id);
+			rs=ps.executeQuery();
+			if(rs.next()){
+				ck=new CheckBook(rs.getInt(1), rs.getInt(2), rs.getDate(3), rs.getDate(4), rs.getString(5), rs.getString(6));
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return ck;
 	}
 }

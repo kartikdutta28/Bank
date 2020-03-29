@@ -33,7 +33,9 @@ public class TransferDao {
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}

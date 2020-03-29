@@ -66,7 +66,9 @@ public class UserDao {
 				connection.close();
 				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
-				System.out.println(" ->. ps " + ps+" closed");			
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
 			   }catch(Exception e){
 				   e.printStackTrace();
 			}
@@ -97,6 +99,8 @@ public class UserDao {
 				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
 				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -112,6 +116,26 @@ public class UserDao {
 			
 			ps.setDate(2,java.sql.Date.valueOf(java.time.LocalDate.now()));
 			ps.setString(3, name);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	public void updateAdd(int id,String add){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update users_info_v2 set address=? where user_id=?");
+			ps.setString(1, add);
+			ps.setInt(2, id);
 			ps.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

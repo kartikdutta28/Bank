@@ -12,8 +12,6 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" href="css/materialize.min.css" />
   </head>
   <style>
-  	body{
-  	background-color: #757575  ;}
   	
   </style>
   <body >
@@ -43,7 +41,6 @@ pageEncoding="ISO-8859-1"%>
             		out.println("<li><a href='transactionForm.jsp'>Withdraw</a></li>");
             	}
             %>
-            <li><a href="transferForm.jsp">Transfer</a></li>
             <li><a href="faqPage.jsp">FAQ</a>
             <%
             	if(session.getAttribute("name")!=null){

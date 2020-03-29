@@ -48,6 +48,9 @@
         	
         </tbody>
 	</table><br/>
+	<div class="center-align">
+		<a class="btn" onClick="window.print()">Print Statement</a><br/>
+	</div><br/><br/><br/>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

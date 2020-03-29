@@ -56,9 +56,12 @@ public void init(){
 		}finally{
 			try{
 				con.close();
+				System.out.println(con+"closed");
 				ps.close();
+				System.out.println(ps+"ps closed");
 				if(ps2!=null){
 					ps2.close();
+					System.out.println(ps2+"ps2.close");
 				}
 				
 			}catch(Exception e){
@@ -92,9 +95,12 @@ public void init(){
 			}finally{
 				try{
 					con.close();
+					System.out.println(con+"closed");
 					ps.close();
+					System.out.println(ps+"ps closed");
 					if(ps2!=null){
 						ps2.close();
+						System.out.println(ps2+"ps2.close");
 					}
 					
 				}catch(Exception e){

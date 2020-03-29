@@ -28,7 +28,29 @@ public class FaqDao {
 		}finally{
 			try{
 				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
 				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+	public void updateFAQ(int id,String ans){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update FAQ_TABLE set answer=? where question_id=?");
+			ps.setString(1, ans);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -49,8 +71,48 @@ public class FaqDao {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		
+		return list;
+	}
+	public List<FAQ> getUnanswered(){
+		List<FAQ> list=new ArrayList<FAQ>();
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("select * from faq_table");
+			rs=ps.executeQuery();
+			while(rs.next()){
+					if(rs.getString(3)==null){
+						list.add(new FAQ(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+					}
+					
+				
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+				rs.close();
+				System.out.println(" ->. rs " + rs+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		return list;
 	}
 }

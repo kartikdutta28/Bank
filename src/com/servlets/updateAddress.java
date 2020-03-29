@@ -1,29 +1,25 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.Random;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.model.Account;
-import com.model.User;
-import com.persistence.AccountDao;
+import com.persistence.UserDao;
 
 /**
- * Servlet implementation class addnewAccountServlet
+ * Servlet implementation class updateAddress
  */
-public class addnewAccountServlet extends HttpServlet {
+public class updateAddress extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addnewAccountServlet() {
+    public updateAddress() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,17 +36,12 @@ public class addnewAccountServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession(false);
-		User user=(User) session.getAttribute("user");
-		AccountDao ad=new AccountDao();
-		Random random=new Random();
-		int account_id=Integer.parseInt(String.format("%08d", random.nextInt(100000000)));
-		int user_id=user.getUser_id();
-		Double amount=Double.parseDouble(request.getParameter("amount"));
-		String type=request.getParameter("type");
-		String utype=request.getParameter("utype");
-		ad.addAccount(new Account(account_id, user_id, type, amount, new Date(),0,utype,"U",null));
-		request.getRequestDispatcher("userHome.jsp").forward(request, response);
+		int id=Integer.parseInt(request.getParameter("id"));
+		String address=request.getParameter("address");
+		UserDao ud=new UserDao();
+		ud.updateAdd(id, address);
+		response.getWriter().write("<div class='msg msg-info z-depth-3'>Address updated sucessfully</div>");
+		request.getRequestDispatcher("userHome.jsp").include(request, response);
 		doGet(request, response);
 	}
 

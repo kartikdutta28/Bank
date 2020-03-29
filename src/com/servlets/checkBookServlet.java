@@ -48,7 +48,7 @@ public class checkBookServlet extends HttpServlet {
 		int req_id=Integer.parseInt(String.format("%04d", random.nextInt(10000)));
 		Date req_date=new Date();
 		Date del_date=new Date(req_date.getTime() + TimeUnit.DAYS.toMillis( 10 ));
-		String status="Accepted";
+		String status="Accepted and Under Process";
 		if(cd.addCheckBookRequest(new CheckBook(req_id, acc_id, req_date, del_date, address, status))==true){
 			response.getWriter().write("<div class='msg msg-info z-depth-3'>Check Book request accepted with delivery date "
 					+del_date+ "</div>");

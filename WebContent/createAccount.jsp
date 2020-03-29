@@ -102,13 +102,19 @@ pageEncoding="ISO-8859-1"%>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s4">
             <select name="utype" class="browser-default">
+              <option value="" disabled selected>Select Account user type</option>
               <option value="P">Premium User</option>
               <option value="N">Normal User</option>
             </select>
           </div>
-        </div>
+          <div class="col s4 card-panel deep-purple  lighten-5">
+   
+      			<p>A normal user can do maximum 3 transfers in 24 hours and a premium user can do 5 transfers in 24 hours</p>
+    	</div>
+    	</div>
+    			
         <div class="row">
           <div class="input-field col s12">
             <input name="amount" type="text" class="validate" />

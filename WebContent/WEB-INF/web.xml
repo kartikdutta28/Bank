@@ -5,9 +5,9 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-	  <servlet-name>MyServlet1</servlet-name>
-	  <servlet-class>startupServlet.loadOnStartUp</servlet-class>
-	  <load-on-startup>5</load-on-startup>
+    <servlet-name>MyServlet1</servlet-name>
+    <servlet-class>startupServlet.loadOnStartUp</servlet-class>
+    <load-on-startup>5</load-on-startup>
   </servlet>
   <servlet>
     <description></description>
@@ -94,5 +94,25 @@
   <servlet-mapping>
     <servlet-name>checkBookServlet</servlet-name>
     <url-pattern>/checkBookServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>answerQuesServ</display-name>
+    <servlet-name>answerQuesServ</servlet-name>
+    <servlet-class>com.servlets.answerQuesServ</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>answerQuesServ</servlet-name>
+    <url-pattern>/answerQuesServ</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>updateAddress</display-name>
+    <servlet-name>updateAddress</servlet-name>
+    <servlet-class>com.servlets.updateAddress</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateAddress</servlet-name>
+    <url-pattern>/updateAddress</url-pattern>
   </servlet-mapping>
 </web-app>

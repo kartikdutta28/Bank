@@ -109,7 +109,7 @@
             type="submit"
             name="action"
           >
-            Transfer
+            SUBMIT
             <i class="material-icons right">send</i>
           </button>
         </div>

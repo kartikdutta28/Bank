@@ -103,7 +103,7 @@
             <label for="comments">Comments</label>
           </div>
         </div>
-        <div class="row">
+        <div class="row center-align">
           <button
             class="btn waves-effect waves-light"
             type="submit"

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.CheckBook;
+import com.persistence.CheckBookDao;
 import com.persistence.UserDao;
 
 /**
@@ -36,9 +38,14 @@ public class updateAddress extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id=Integer.parseInt(request.getParameter("id"));
+		int id=Integer.parseInt(request.getParameter("user_id"));
 		String address=request.getParameter("address");
 		UserDao ud=new UserDao();
+		CheckBookDao cd=new CheckBookDao();
+		CheckBook ck=cd.getStatus(id);
+		if(ck!=null){
+			cd.updateAddress(id, address);
+		}
 		ud.updateAdd(id, address);
 		response.getWriter().write("<div class='msg msg-info z-depth-3'>Address updated sucessfully</div>");
 		request.getRequestDispatcher("userHome.jsp").include(request, response);

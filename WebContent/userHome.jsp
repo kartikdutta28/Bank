@@ -126,9 +126,9 @@ pageEncoding="ISO-8859-1"%>
 			}else{
 				t+="Salary Account";
 			}if(a.getUser_type().equals("N")){
-				p+="Normal User Account with max 3 transfers a day";
+				p+="Normal User (Account with max 3 transfers a day)";
 			}else{
-				p+="Premium User Account with max 5 transfers a day";
+				p+="Premium User (Account with max 5 transfers a day)";
 			}
 			String id=String.valueOf(a.getAccount_id());
 			CheckBookDao ck=new CheckBookDao();

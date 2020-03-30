@@ -15,9 +15,9 @@ pageEncoding="ISO-8859-1"%>
     <jsp:include page="navbar.jsp"></jsp:include>
     <div class="row">
       <div class="col s2"></div>
-      <form class="col s8" action="RegisterServlet" method="post">
+      <form class="col s8 card blue-grey darken-1 hoverable" action="RegisterServlet" method="post">
         <div class="row">
-          <div class="card-panel deep-purple  lighten-5 ">
+          <div class="card-panel">
             <b>Fill the form below to open account</b>
           </div>
         </div>
@@ -123,7 +123,7 @@ pageEncoding="ISO-8859-1"%>
             <label class="black-text" for="amount">Enter Initial Amount</label>
           </div>
         </div>
-        <div class="row">
+        <div class="row center-align">
           <button
             class="btn waves-effect waves-light pulse"
             type="submit"

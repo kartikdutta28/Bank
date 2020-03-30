@@ -46,11 +46,11 @@ pageEncoding="ISO-8859-1"%>
     	session.invalidate(); } %> <br /><br /><br /><br />
     <div class="row">
       <div class="col s2"></div>
-      <form id="formid" class="col s6" action="LoginServlet" method="post">
+      <form id="formid" class="col s5 card blue-grey darken-1 hoverable" action="LoginServlet" method="post">
         <div class="card-panel deep-purple  lighten-5 hoverable ">
           Login if your'e existing user, Else
-          <a href="createAccount.jsp">Register Here</a> to create or open an
-          account
+          <a href="createAccount.jsp">Register Here</a> to create 
+          or open an account
         </div>
         <div class="row">
           <div class="right-align input-field col s6">
@@ -65,11 +65,11 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="password" type="password" class="validate" />
+            <input placeholder="Password" name="password" type="password" class="validate" />
             <label for="password">Password</label>
           </div>
         </div>
-        <div class="row">
+        <div class="row center-align">
           <button
             class="btn waves-effect waves-light pulse"
             type="submit"

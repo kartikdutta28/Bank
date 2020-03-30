@@ -21,7 +21,7 @@
         <div class="row">
           <div class="right-align input-field col s3">
             <input
-              disabled="disabled"
+              
               name="user_id"
               type="text"
               class="validate"
@@ -31,7 +31,7 @@
           </div>
           <div class="right-align input-field col s3">
             <input
-              disabled="disabled"
+              
               name="user_name"
               type="text"
               class="validate"

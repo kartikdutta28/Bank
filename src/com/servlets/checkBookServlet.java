@@ -45,6 +45,8 @@ public class checkBookServlet extends HttpServlet {
 		Random random=new Random();
 		int acc_id=Integer.parseInt(request.getParameter("account_id"));
 		String address=request.getParameter("address");
+		System.out.println("Inside servlet");
+		System.out.println(address);
 		int req_id=Integer.parseInt(String.format("%04d", random.nextInt(10000)));
 		Date req_date=new Date();
 		Date del_date=new Date(req_date.getTime() + TimeUnit.DAYS.toMillis( 10 ));

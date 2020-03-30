@@ -24,6 +24,8 @@ public class CheckBookDao {
 				java.sql.Date mdate = new java.sql.Date(checkBook.getDelivery_date().getTime());
 				ps.setDate(3,rdate);
 				ps.setDate(4, mdate);
+				System.out.println("Inside ck dao");
+				System.out.println(checkBook.getAddress());
 				ps.setString(5, checkBook.getAddress());
 				ps.setString(6, checkBook.getRequest_status());
 				ps.executeUpdate();
@@ -95,5 +97,26 @@ public class CheckBookDao {
 			}
 		}
 		return ck;
+	}
+	public void updateAddress(int id,String add){
+		try{
+			connection=cp.openConnection();
+			ps=connection.prepareStatement("update checkbook_info set DELIVERY_ADDRESS=? WHERE ACCOUNT_ID=? ");
+			ps.setString(1, add);
+			ps.setInt(2, id);
+			int n=ps.executeUpdate();
+			System.out.println(n+" Rows updated  ");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try{
+				connection.close();
+				System.out.println(" ->. con " + connection+" closed");
+				ps.close();
+				System.out.println(" ->. ps " + ps+" closed");
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 	}
 }

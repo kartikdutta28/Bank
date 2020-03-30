@@ -100,7 +100,7 @@ pageEncoding="ISO-8859-1"%>
         </ul>
       </div>
 
-      <div class="col s7">
+      <div class="col s6">
       	
         <div class="card blue-grey darken-1 hoverable">
           <div class="card-content white-text">
@@ -152,7 +152,7 @@ pageEncoding="ISO-8859-1"%>
 	       }
 	%>  
       </div><br/>
-      <div class="col s2">
+      <div class="col s3">
       	<a class="btn" onClick="window.print()">Print </a>
       	<ul class="collection with-header">
       	<li class="collection-header"><h4>Quick Links</h4></li>

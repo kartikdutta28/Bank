@@ -55,15 +55,10 @@ contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <input disabled name="password" type="password" class="validate"
             <%="value='"+user.getPassword()+"'" %> />
             <label for="password">Password</label>
-          </div>
-          <div class="input-field col s6">
-            <input name="re-password" type="password" class="validate"
-            <%="value='"+user.getPassword()+"'" %>/>
-            <label for="re-password">Re-enter Password</label>
           </div>
         </div>
         <div class="row">

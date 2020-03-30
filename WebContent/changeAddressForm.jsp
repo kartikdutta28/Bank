@@ -48,8 +48,8 @@
               type="text"
               class="validate"
             />
-       		<input name="id" <%="value='"+user.getUser_id()+"'" %>/>
-            <label for="name">Address</label>
+       		
+            <label for="address">Address</label>
           </div>
         </div>
         <div class="row">

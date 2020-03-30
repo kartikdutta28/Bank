@@ -25,16 +25,16 @@ pageEncoding="ISO-8859-1"%>
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
             <input
-              placeholder="Placeholder"
+              placeholder="First Name"
               name="first_name"
               type="text"
               class="validate"
             />
-            <label for="first_name">First Name</label>
+            <label class="black-text" for="first_name">First Name</label>
           </div>
           <div class="input-field col s6">
-            <input name="last_name" type="text" class="validate" />
-            <label for="last_name">Last Name</label>
+            <input name="last_name" type="text" class="validate" placeholder="Last Name"/>
+            <label class="black-text" for="last_name">Last Name</label>
           </div>
         </div>
         <div class="row">
@@ -45,7 +45,7 @@ pageEncoding="ISO-8859-1"%>
               type="text"
               class="validate"
             />
-            <label for="disabled">Address</label>
+            <label class="black-text" for="address">Address</label>
           </div>
         </div>
         <div class="row">
@@ -56,7 +56,7 @@ pageEncoding="ISO-8859-1"%>
               type="text"
               class="validate"
             />
-            <label for="user_name">User Name</label>
+            <label class="black-text" for="user_name">User Name</label>
           </div>
         </div>
         <div class="row">
@@ -68,19 +68,20 @@ pageEncoding="ISO-8859-1"%>
               type="text"
               class="validate"
             />
-            <label for="ph_no">Phone Number</label>
+            <label class="black-text" for="ph_no">Phone Number</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6">
             <input
+             placeholder="Password goes here"
               name="password"
               type="password"
               class="validate"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
               required
             />
-            <label for="password">Password</label>
+            <label class="black-text" for="password">Password</label>
             <span
               class="helper-text"
               data-error="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -91,11 +92,12 @@ pageEncoding="ISO-8859-1"%>
         </div>
         <div class="row">
           <div class="input-field col s6">
-            <input name="email" type="email" class="validate" />
-            <label for="email">Email</label>
+            <input placeholder="Ex- john@gmail.com" name="email" type="email" class="validate" />
+            <label class="black-text" for="email">Email</label>
           </div>
           <div class="input-field col s6">
             <select name="type" class="browser-default">
+              <option value="" disabled selected>Choose type of account</option>
               <option value="SA">Salary Account</option>
               <option value="SV">Savings Account</option>
             </select>
@@ -117,8 +119,8 @@ pageEncoding="ISO-8859-1"%>
     			
         <div class="row">
           <div class="input-field col s12">
-            <input name="amount" type="text" class="validate" />
-            <label for="amount">Enter Initial Amount</label>
+            <input placeholder="Initial Balance in $"name="amount" type="text" class="validate" />
+            <label class="black-text" for="amount">Enter Initial Amount</label>
           </div>
         </div>
         <div class="row">

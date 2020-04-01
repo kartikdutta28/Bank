@@ -52,8 +52,8 @@ public class transactionServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		Double balance=td.getAmount(account_id);
 		if(balance<amount && type.equalsIgnoreCase("W")){
-			out.write("<div class='msg msg-error z-depth-3 scale-transition'>Withdrawl Failed !"
-					+ "Sorry amount is more than your Balance");
+			out.write("<div class='msg msg-error z-depth-3'>Withdrawl Failed !"
+					+ "Sorry amount is more than your Balance</div>");
 			request.getRequestDispatcher("userHome.jsp").include(request, response);
 		}else{
 			if(type.equalsIgnoreCase("D")){

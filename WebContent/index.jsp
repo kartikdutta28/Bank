@@ -46,7 +46,7 @@ pageEncoding="ISO-8859-1"%>
     	session.invalidate(); } %> <br /><br /><br /><br />
     <div class="row">
       <div class="col s2"></div>
-      <form id="formid" class="col s5 card blue-grey darken-1 hoverable" action="LoginServlet" method="post">
+      <form id="formid" class="col s4 card blue-grey darken-1 hoverable" action="LoginServlet" method="post">
         <div class="card-panel deep-purple  lighten-5 hoverable ">
           Login if your'e existing user, Else
           <a href="createAccount.jsp">Register Here</a> to create 

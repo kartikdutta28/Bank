@@ -15,7 +15,7 @@ pageEncoding="ISO-8859-1"%>
   	
   </style>
   <body >
-    <div class="navbar-fixed">
+    <div class="navbar">
       <nav>
         <div class="nav-wrapper">
           <a href="index.jsp" class="brand-logo"

@@ -11,10 +11,7 @@ pageEncoding="ISO-8859-1"%>
     />
     <link rel="stylesheet" href="css/materialize.min.css" />
   </head>
-  <style>
-  	
-  </style>
-  <body >
+  <body>
     <div class="navbar">
       <nav>
         <div class="nav-wrapper">

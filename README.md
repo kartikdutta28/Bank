@@ -2,6 +2,7 @@
 ![Issues](https://img.shields.io/github/issues/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
 ![Froks](https://img.shields.io/github/forks/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
 ![Stars](	https://img.shields.io/github/stars/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
+![Downloads](https://img.shields.io/amo/users/4)
 #### Bank Web Application Screen Shots
 
 ### Login Page First Page

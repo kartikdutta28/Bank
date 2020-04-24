@@ -2,6 +2,7 @@
 ![Issues](https://img.shields.io/github/issues/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
 ![Froks](https://img.shields.io/github/forks/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
 ![Stars](	https://img.shields.io/github/stars/kartikdutta28/Bank?style=for-the-badge&logo=appveyor)
+[![Build Status](http://localhost:9090/buildStatus/icon?job=Bank)](http://localhost:9090/job/Bank/)
 #### Bank Web Application Screen Shots
 
 ### Login Page First Page
